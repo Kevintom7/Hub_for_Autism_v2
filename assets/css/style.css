@@ -1,0 +1,3728 @@
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --primary-color:#0095DA;
+    --text-color:#000;
+    --background-color:#F5F5F5;
+
+}
+
+body{
+
+    font-family: "Poppins", sans-serif;
+    color:var(--text-color);
+    background:var(--background-color);
+
+
+}
+html, body {
+  height: 100%;
+  /* overflow: hidden;  */
+  /* prevents any scrolling, including if content overflows */
+}
+
+
+.container{
+
+    max-width:1516px;
+    width:100%;
+    margin:0 auto;
+    padding:0 30px;
+
+}
+
+img{
+
+    max-width:100%;
+    display:block;
+
+}
+
+/*==========================
+    HEADER
+==========================*/
+
+.header{
+
+    width:100%;
+    position:absolute;
+    top: 46px;
+    left:0;
+    z-index:100;
+
+}
+
+
+
+.header-container{
+
+    background:#fff;
+
+    display:flex;
+
+    align-items:center;
+
+    /* justify-content:space-between; */
+    justify-content: flex-start;
+    height: 150px;
+    margin: 0px auto;
+
+    /* padding:18px 30px; */
+ padding: 0px 33px 0px 29px; /* Top Right Bottom Left */
+   border-radius: 30px;
+   box-shadow: 0 4px 30px 0 rgba(0, 43, 73, 0.15);
+
+    /* box-shadow:0 10px 25px rgba(0,0,0,.12); */
+
+     position: relative; 
+      transition: border-radius 0s;
+
+}
+
+/* When a mega menu inside the header is open, flatten the bottom
+   corners so the dropdown reads as a seamless extension of the header */
+.header-container:has(.nav-link:hover){
+    border-radius: 30px 30px 0 0;
+     transition: border-radius 0s;
+}
+
+
+
+.logo{
+
+
+width: 201px;
+height: 84px;
+display: block;
+
+}
+
+
+
+.navbar{
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 37px;
+      margin-left: 77px;
+}
+
+.navbar a{
+
+    text-decoration:none;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 35px;
+    color: var(--text-color);
+    transition:.3s;
+
+}
+
+.navbar a:hover{
+    color: var(--primary-color) ;
+}
+
+.arrow-class{
+    display: flex;
+align-items: center;
+gap: 6px;
+}
+
+.arrow_down{
+    /* padding: 6.5px 0px 6.5px 0px; */
+      width: 10px;
+      height: 24px;
+    display: flex;
+    /* background-color: #0095DA; */
+    align-items: center;
+
+}
+
+
+.arrow_down img{
+    width: 8px;
+    height: 8px;
+    transition: transform 0.3s ease;
+
+}
+.arrow-class:hover .arrow_down img {
+    transform: rotateX(180deg);
+}
+
+.arrow_down svg{
+   
+    transition: transform 0.3s ease;
+
+}
+.arrow-class:hover .arrow_down svg {
+    transform: rotateX(180deg);
+  
+}
+.arrow-class:hover .arrow_down svg path{
+    fill: #0095DA;
+}
+/*==========================
+    RIGHT SIDE
+==========================*/
+
+.header-right{
+
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-left: auto;
+
+}
+
+
+/*==========================
+    LANGUAGE BUTTON
+==========================*/
+
+.flag-link {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1/1;
+    border-radius: 10px;
+    background: #D7EDF8;
+}
+
+.flag-img {
+    width: 33px;
+    height: 20px;
+    flex-shrink: 0;
+    aspect-ratio: 33/20;
+}
+
+
+.vector{
+    display: flex;
+width: 50px;
+height: 50px;
+padding: 11px;
+justify-content: center;
+align-items: center;
+aspect-ratio: 1/1;
+border-radius: 10px;
+background-color: var(--primary-color);
+}
+.vector:hover{
+    background-color: var(--text-color);
+}
+
+.vector img{
+    width: 20px;
+height: 24px;
+color: var(--background-color);
+} 
+
+/*==========================
+    CONTACT BUTTON
+==========================*/
+
+.contact-btn{
+
+    text-decoration:none;
+    display: inline-flex;
+    padding: 12px 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    background: #DF0B13;
+     color: var(--background-color);
+
+
+text-align: center;
+/* B */
+font-size: 18px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.contact-btn-div img{
+    width: 22.005px;
+height: 22.005px;
+ transition: transform 0.4s ease;
+}
+
+.contact-btn-div{
+    width: 24px;
+    height: 24px;
+}
+    
+
+.contact-btn:hover img {
+    transform: rotate(90deg);
+}
+
+.toggle_button{
+    width: 24px;
+    height: 24px;
+    display: none;
+      cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+/* .toggle_button{
+  display: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+} */
+
+.mobile-menu-overlay{
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #FFF;
+  z-index: 2000;
+  overflow-y: auto;
+  padding: 24px 20px 40px;
+}
+
+.mobile-menu-overlay.active{
+  display: block;
+}
+
+body.menu-open{
+  overflow: hidden;
+}
+
+.mobile-menu-top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.mobile-menu-top .logo img{
+  width: 130px;
+  height: auto;
+}
+
+.mobile-menu-right{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mobile-menu-right .flag-link,
+.mobile-menu-right .vector{
+  width: 60px;
+  height: 54px;
+}
+
+.mobile-menu-close{
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.mobile-nav-list{
+  border-top: 1px solid rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+}
+
+.mobile-nav-item{
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.mobile-nav-item > a{
+  display: block;
+  padding: 14px 4px;
+ color: #33302C;
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+text-decoration: none;
+}
+
+.mobile-nav-toggle{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 4px;
+  background: none;
+  border: none;
+   font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  color: #33302C;
+
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.mobile-nav-toggle .chevron{
+  transition: transform 0.3s ease;
+}
+
+.mobile-nav-item.open .mobile-nav-toggle{
+  background: #F5F9FC;
+}
+
+.mobile-nav-item.open .chevron{
+  transform: rotate(180deg);
+}
+
+.mobile-nav-submenu{
+  display: none;
+  flex-direction: column;
+  padding: 0 4px 12px 12px;
+}
+
+.mobile-nav-item.open .mobile-nav-submenu{
+  display: flex;
+  flex-direction: row;
+}
+
+.mobile-nav-submenu a{
+  padding: 8px 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0,0,0,0.75);
+  text-decoration: none;
+}
+
+.mobile-contact-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #DF0B13;
+
+ 
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  max-width: 327px;
+}
+.mobile-contact-btn span{
+color: #FFF;
+
+
+font-size: 18px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+
+.mobile-contact-btn img{
+    width: 22.005px;
+height: 22.005px;
+ transition: transform 0.4s ease;
+}
+    
+
+.mobile-contact-btn:hover img {
+    transform: rotate(90deg);
+    background-color: #DF0B13;
+}
+
+.mobile-promo-card{
+  position: relative;
+  overflow: hidden;
+  background: #002B49;
+  border-radius: 14px;
+  padding: 20px;
+  color: #FFF;
+}
+
+.corner-svg{
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 110px;
+    height: 110px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.corner-fill,
+.corner-outline{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.corner-fill{
+    z-index: 1;
+}
+
+.corner-outline{
+    z-index: 2;
+}
+
+.promo-icon{
+  width: 40px;
+  height: 40px;
+ 
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.mobile-promo-card h3{
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.mobile-promo-card p{
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 22px;
+  margin-bottom: 16px;
+  opacity: 0.9;
+}
+
+.promo-btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFF;
+  color: #000;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+.mobile-nav-submenu{
+  display: none;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 14px 4px 16px 4px;
+}
+
+.mobile-nav-item.open .mobile-nav-submenu{
+  display: flex;
+}
+
+.mobile-nav-submenu a{
+  flex: 1 1 calc(50% - 5px);
+  display: flex;
+  align-items: center;
+  background: #D7EDF8;
+  color: #33302C;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 12px 14px;
+  border-radius: 10px;
+  min-width: 130px;
+}
+
+.mobile-nav-submenu a.full-width{
+  flex: 1 1 100%;
+}
+
+
+
+
+/*==========================
+    MEGA MENU (generic)
+==========================*/
+.mega-menu{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: auto;
+    margin: 0;
+    padding: 0px 33px 33px 33px;
+    border-radius: 0 0 30px 30px;
+   background: #FFF;
+    z-index: 999;
+    display: none;
+    transition: transform 1.5s ease;
+}
+
+.nav-link:hover .mega-menu{
+    display: block;
+} 
+/* .mega-menu{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    background: white;
+    border-radius: 0 0 30px 30px;
+
+    transform-origin: top center;
+    transform: scaleY(0);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.25s ease;
+
+    overflow: hidden;
+}
+
+.nav-link:hover .mega-menu{
+    transform: scaleY(1);
+    opacity: 1;
+    visibility: visible;
+} */
+
+.mega-menu-inner{
+    display: flex;
+    align-items: stretch;
+   
+}
+
+/*==========================
+    AUTISM MEGA MENU
+==========================*/
+
+.autism-mega-menu .mega-menu-inner{
+   
+display: inline-flex;
+padding: 37px 52px 37px 39px;
+align-items: center;
+gap: 45px;
+border-radius: 20px;
+background: #D7EDF8;
+   
+}
+
+.mega-card{
+    position: relative;
+    overflow: hidden;
+   width: 317px;
+   height: 414px;
+    
+    flex-shrink: 0;
+     border-radius: 10px;
+    background: #FFF;
+    padding: 30px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.star-shape{
+    position: absolute;
+    top: -19px;
+    left: 209px;
+    width: 135px;
+    height: 137px;
+}
+.mega-card-icon{
+    width: 45.433px;
+height: 49.002px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+
+.mega-card-icon svg{
+    width: 26px;
+    height: 26px;
+}
+.puzzle-shape{
+    position: absolute;
+    top: -10px;
+    right: -25px;
+    width: 135.55px;
+    height: 135.26px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* both svgs occupy the identical box so they overlay perfectly */
+.puzzle-shape.puzzle-shape-outline{
+    top: -10px;
+    right: -25px;
+}
+.puzzle-shape1{
+  position: absolute;
+    top: -36.5px;
+    left: 200px;
+    width: 135.55px;
+    height: 135.26px;
+    z-index: 1;
+    pointer-events: none;
+}
+.puzzle-shape1.puzzle-shape-outline{
+    top: -10px;
+    right: -25px;
+}
+.mega-card .inner-card{
+    display: flex;
+width: 277px;
+flex-direction: column;
+align-items: flex-start;
+gap: 23px;
+}
+.inner-card-content{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+align-self: stretch;
+}
+.inner-card-content h3{
+    color: #000;
+font-size: 18px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+
+
+.inner-card-content p{
+   color: rgba(0, 0, 0, 0.90);
+
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: 30px;
+margin-bottom: 27px;
+}
+.autism_mega_btn .arrow{
+    position:absolute;
+    width:18px;
+    height:16px;
+    transition:transform .4s ease, opacity .4s ease;
+}
+.autism_mega_btn:hover .arrow1{
+    transform:translateX(25px);
+    opacity:0;
+}
+
+.autism_mega_btn:hover .arrow2{
+    transform:translateX(0);
+    opacity:1;
+}
+.autism_mega_btn{
+    background-color: white;
+        display: inline-flex;
+padding: 12px 15px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+border-radius: 10px;
+text-decoration: none;
+}
+
+.autism_mega_btn span{
+    color: black;
+}
+
+.hub_btn{
+    background-color: #006FA2;
+  
+}
+.hub_btn span{
+  color: white;
+}
+
+.mega-links{
+    flex: 1;
+    display: flex;
+    gap: 53px;
+}
+
+.mega-links-col{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.mega-link-item{
+    display: flex;
+    padding: 10px;
+    align-items: flex-start;
+    gap: 22px;
+
+    border-radius: 15px;
+}
+.mega-link-item:hover{
+    background-color: #FFF;
+}
+
+.mega-link-item .main{
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.mega-link-line{
+    width: 100%;
+    height: 2px;
+    display: block;
+}
+
+.mega-link-icon{
+    display: flex;
+    width: 90px;
+    height: 90px;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: #FFF;
+     flex-shrink: 0;
+}
+.mega-link-item:hover .mega-link-icon{
+   background: #D7EDF8;
+    transform: scale(0.9);
+}
+.mega-link-item:hover .mega-link-icon svg *{
+    fill: #000;
+}
+
+
+
+.mega-link-icon svg{
+    width: 37.816px;
+    height: 46.795px;
+     transition: transform 1s ease;
+}
+
+.mega-link-text h4{
+  color: #000;
+
+font-size: 18px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.mega-link-text p{
+  color: #000;
+
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 30px;
+}
+
+
+/* mega menu advice and guidances */
+.advice-mega-menu .mega-menu-inner{
+    display: inline-flex;
+    padding: 37px 52px 37px 39px;
+    align-items: center;
+    gap: 45px;
+    border-radius: 20px;
+    background: #D7EDF8; /* change this if Advice & Guidance should have a different tint */
+}
+
+.advice-card{
+      background: #002B49;
+      color: #FFF;
+}
+.advice-card .inner-card-content h3,.advice-card .inner-card-content p{
+    color: white;
+}
+
+
+
+
+/*  advice hub  */
+
+.hub-mega-menu  .mega-menu-inner{
+        display: inline-flex;
+    padding: 37px 52px 37px 39px;
+   
+    gap: 38px;
+    border-radius: 20px;
+    background: #D7EDF8;
+}
+/* .mega-hub{
+    display: flex;
+    gap: 38px;
+     align-items: flex-start;
+}
+.hub-container{
+    display: flex;
+width: 290px;
+height: 301px;
+padding: 16px;
+flex-direction: column;
+align-items: flex-start;
+gap: 20px;
+border-radius: 10px;
+background: #FFF;
+} */
+
+.mega-hub{
+    display: flex;
+    gap: 38px;
+    align-items: flex-start;
+    flex-wrap: wrap;        /* safety net if it still can't fit */
+}
+
+.hub-container{
+    display: flex;
+    flex: 1 1 220px;         /* was: width: 290px — now shrinks, min ~220px */
+    max-width: 290px;        /* caps it at the original design size on wide screens */
+    height: 301px;
+    padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    border-radius: 10px;
+    background: #FFF;
+}
+.hub-img{
+    display: flex;
+width: 42px;
+height: 42px;
+padding: 13px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+aspect-ratio: 1/1;
+border-radius: 100px;
+background: #000;
+ position: relative;   /* Required */
+    overflow: hidden; 
+}
+.mega-overimg{
+    position: absolute;
+    top: -6px;
+    left: 212px;
+}
+
+.hub-title{
+    display: flex;
+justify-content: space-between;
+align-items: center;
+align-self: stretch;
+}
+
+.hub-title h2{
+
+font-size: 18px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.hub-main-img{
+    height: 194px;
+flex-shrink: 0;
+align-self: stretch;
+border-radius: 8px;
+border: 4px solid #FFF;
+
+}
+.autism_arrow path {
+    fill: white;
+}
+.autism_arrow1 path {
+    fill: white;
+}
+
+
+
+
+
+.hub-arrow{
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    transition: transform .35s ease, opacity .35s ease;
+}
+
+.hub-arrow1{
+    transform: translate(0,0);
+    opacity: 1;
+}
+
+.hub-arrow2{
+    transform: translate(-16px,16px);
+    opacity: 0;
+}
+
+/* Hover animation */
+.hub-container:hover .hub-arrow1{
+    transform: translate(20px,-20px);
+    opacity: 0;
+}
+
+.hub-container:hover .hub-arrow2{
+    transform: translate(0,0);
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  header_section */
+.hero{
+  
+      width: 100%;
+    min-height: 100vh;
+
+     background-image: url("../images/Frame\ 4.png");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    position:relative;
+    overflow: hidden;
+}
+.hero .container{
+    padding-top: 364px;
+    
+}
+.hero-content {
+    max-width: 874px;
+    /* gap:38px; */
+    display: flex;
+    flex-direction: column;
+    padding-left: 23px;
+}
+
+.hero-content h1 {
+    color: #fff;
+    font-size: 65px;
+    font-weight: 700;
+    line-height: 80px;
+    margin-bottom: 37px;
+}
+
+.hero-content span {
+    display: inline-block;
+    background-color: #DF0B13;
+    border-radius: 10px;
+    padding: 6px 12px;
+    line-height: 1;
+
+}
+
+ .hero_subcontent {
+    margin-left: 6px;
+    max-width: 778px;
+    margin-bottom: 30px; /* controls space before the buttons */
+}
+
+.hero_subcontent p {
+    color: #FFF;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 35px;
+    /* padding-left: 6px; */     /*removed  res */
+    /* remove margin-bottom here — let the parent handle spacing */
+}
+.hero-buttons{
+    display: inline-flex;
+    gap: 25px;
+    /* padding-left: 4px; */
+    padding-left: 6px;      /*removed  res */
+}
+.hero_buts{
+    display: inline-flex;
+padding: 12px 15px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+border-radius: 10px;
+background: #FFF;
+text-decoration: none;
+
+}
+
+.hero_buts span{
+    color: #000;
+text-align: center;
+  font-family: "Poppins", sans-serif;
+font-size: 18px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+background: #FFF;
+padding: 0px;
+}
+.hero_buts img{
+    width: 24px;
+height: 24px;
+aspect-ratio: 1/1;
+transition: transform 0.4s ease;
+}
+
+.hero_icons{
+    width:24px;
+    height:24px;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.hero_icons .arrow{
+    position:absolute;
+    /* width:18px;
+    height:16px; */
+    transition:transform .4s ease, opacity .4s ease;
+}
+
+/* First Arrow */
+
+.arrow1{
+    transform:translateX(0);
+    opacity:1;
+}
+
+/* Second Arrow */
+
+.arrow2{
+    transform:translateX(-25px);
+    opacity:0;
+}
+
+/* Hover */
+
+.hero_buts:hover .arrow1{
+    transform:translateX(25px);
+    opacity:0;
+}
+
+.hero_buts:hover .arrow2{
+    transform:translateX(0);
+    opacity:1;
+}
+.hero_icons2 {
+    width: 24px;
+    height: 24px;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.hero_icons2 img {
+    width: 21px;
+    height: 21px;
+    display: block;
+}
+
+.button-bg, .button-bg span{
+  background: #FED103;
+}
+.button-bg:hover img {
+    transform: rotate(-90deg);
+}
+
+
+/* autism_section*/
+
+.autism_section{
+    width: 100%;
+    background-color: white;
+    max-height: 709px;
+  
+}
+.autism_section .container{
+    overflow: hidden;
+}
+.autism_class{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;      /* let it stack on narrow screens instead of overflowing */
+    gap: 83px;
+    padding-left: 46px;
+   
+     padding-top: 1px;
+  /* padding-bottom: 80px;  */
+  padding-bottom: 47px;
+}
+
+/* .autism_class img{
+    max-width: 620px;
+    flex: 1 1 300px;      
+} */
+
+.autism-img{
+  max-width: 620px;
+height: 622px;
+aspect-ratio: 310/311;
+  /* margin: 0 auto;    */
+     /* center it since autism_class is now column on mobile */
+  position: relative;   /* establishes a positioning context for decorative shapes */
+  overflow: visible;
+     /* keep this visible so shapes can still peek out slightly, or use hidden if you want a hard clip */
+
+ 
+}
+
+.autism-img img{
+  width: 100%;
+  max-width: 620px;
+  height: auto;
+  display: block;
+
+}
+
+.autism-content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 45px;
+    margin-top: 54px;
+    max-width: 683px;     /* was: width: 683px — this is the key change */
+    flex: 1 1 300px;
+}
+.autism-content h1{
+color: #000;
+font-size: 50px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.autism-content span{
+     display: inline-block;
+    background-color: #fed103;
+    border-radius: 5px;
+    padding: 5px 8px;
+    line-height: 1;
+    margin-left: -10px;
+}
+
+.autism-content1{
+  display: none;
+}
+.autism-content1 h1{
+color: #000;
+font-size: 50px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.autism-content1 span{
+     display: inline-block;
+    background-color: #DF0B13;
+    border-radius: 5px;
+    padding: 5px 8px;
+    line-height: 1;
+}
+
+.autism-content p{
+color: #000;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 39px;
+}
+.austism-btn span{
+    background-color: #006FA2;
+    color: white;
+}
+
+.austism-btn{
+    background-color:#006FA2;
+}
+/* ---------- Advice Section ---------- */
+.advice{
+    background:#fff;
+}
+
+/* ---------- Wave ---------- */
+.wave{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    margin-bottom: -1px;
+}
+.wave svg{
+    display:block;
+    width:100%;
+    height:auto;
+    aspect-ratio: 960 / 134.37;
+    min-height: 40px;
+}
+
+/* ---------- Background ---------- */
+.advice-body{
+    background-image: url(../images/Advice-Guidance-Block.jpg);
+    background-size: cover;
+    background-position:center;
+    min-height: 709px;
+}
+
+.container_body{
+    max-width: 1558px;
+    padding: 0 30px;
+    margin: 0 auto;
+}
+
+/* ---------- Main flex row ---------- */
+.advice_main{
+    width: 100%;
+    display: flex;
+    /* gap: 107px; */  
+    gap: 80px;
+}
+
+/* ---------- Left column (image + prev arrow) ---------- */
+.advice_left{
+    display: flex;
+    gap: 70px;
+    flex: 1 1 0%;
+    min-width: 0;
+}
+
+.arrow-main{
+    padding-top: 290px;
+}
+
+.arrow-advice{
+    display: inline-flex;
+    padding: 13px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    background: #000;
+    width: 50px;
+    height: 50px;
+}
+
+.arrow-img-main{
+    padding-top: 33px;
+    width: 100%;
+    flex: 1;
+    min-width: 0;
+}
+
+.arrow_img_wrapper{
+    flex: 1 0 0;
+    align-self: stretch;
+    border: solid 15px white;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 24px;
+      max-width: 559px;
+}
+
+.arrow_img_wrapper img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  
+    
+}
+.advice_content11{
+    /* padding-top: 49.5px; */
+    padding-top: 45px;
+    padding-left: 9px;
+    display: flex;
+    gap: 91px;
+}
+.advice_subcontent{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 559px;
+}
+.advice_subcontent h3{
+color: rgba(0, 0, 0, 0.90);
+font-size: 30px;
+font-style: normal;
+font-weight: 700;
+line-height: 42px;
+}
+.advice_subcontent p{
+    color: rgba(0, 0, 0, 0.90);
+
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 39px; 
+}
+.arrow-hide{
+    display: none;
+}
+
+/*animation*/
+.ags-image-frame{
+    position: relative;
+    max-width: 559px;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #fff;
+    border: 15px solid #FFF;
+}
+
+.ags-image-slide{
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+}
+.ags-image-slide.ags-active{
+    display: block;
+    animation: agsFadeIn .5s ease both;
+}
+.ags-image-slide.ags-exit{
+    display: block;
+    position: absolute;
+    inset: 0;
+    animation: agsFadeOut .5s ease both;
+}
+
+/* white flash layer sits above both images during the swap */
+.ags-image-frame::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #FFF;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+.ags-image-frame.ags-flash::after{
+    animation: agsWhiteFlash .5s ease;
+}
+
+.ags-content-track{
+    position: relative;
+    max-width: 559px;
+    width: 100%;
+    overflow: hidden; /* clips slide movement so it never leaves this section */
+}
+
+.ags-content-slide{
+    display: none;
+    flex-direction: column;
+    gap: 30px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* no bottom/inset — height grows to fit content (heading, text, button) */
+}
+
+.ags-content-slide.ags-active{
+    display: flex;
+    position: relative; /* the active slide sets the track's real height */
+    animation: agsSlideIn .5s ease both;
+}
+.ags-content-slide.ags-exit{
+    display: flex;
+    animation: agsSlideOut .5s ease both;
+}
+
+@keyframes agsFadeIn{
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+@keyframes agsFadeOut{
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
+}
+@keyframes agsWhiteFlash{
+    0%   { opacity: 0; }
+    50%  { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes agsSlideIn{
+    0%   { opacity: 0; transform: translateX(40px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes agsSlideOut{
+    0%   { opacity: 1; transform: translateX(0); }
+    100% { opacity: 0; transform: translateX(-40px); }
+}
+
+.ags-arrow{ cursor: pointer; }
+/* ---------- Right column (heading + text) ---------- */
+.advice_right{
+    flex: 1 1 0%;
+    min-width: 0;
+    position: relative;
+    padding-bottom: 40px;
+}
+
+.advice_head{
+    padding-left: 13px;
+    max-width: 100%;
+    padding-top: 40px;
+}
+
+.advice_head h2{
+    color: rgba(0, 0, 0, 0.90);
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.advice_head span{
+    background-color: #59c4ab;
+    /* padding: 13px 13px 9.7px 16px; */
+    
+    padding: 3px 13px 4.7px 16px;
+    border-radius: 10px;
+    margin-left: -14px;
+}
+.advice_head1{
+    padding-left: 13px;
+    max-width: 100%;
+    padding-top: 40px;
+    display: none;
+}
+
+.advice_head1 h2{
+    color: rgba(0, 0, 0, 0.90);
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.advice_head1 span{
+     background-color: #dcfcf4;
+    padding: 8px 13px 2.7px 6px;
+   
+    border-radius: 5px;
+    margin-left: -14px;
+}
+
+/* ---------- Next arrow (mirrors .arrow-advice) ---------- */
+.arrow-advice-next{
+    display: inline-flex;
+    padding: 13px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    background: #000;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.advice_subcontent h3{
+color: rgba(0, 0, 0, 0.90);
+
+font-size: 30px;
+font-style: normal;
+font-weight: 700;
+line-height: 42px; 
+}
+
+.advice_btn{
+    background-color: black;
+    color: white;
+    max-width: 192px;
+}
+.advice_btn span{
+ color: white;
+ background-color: black;
+}
+.arrow_right_btn{
+ padding-top: 49.5px;
+}
+.advice_btn {
+    color: #fff;
+}
+
+.advice_btn .arrow path {
+    fill: #fff;
+}
+
+.arrow-advice{
+    overflow: hidden; /* keep this so the second icon doesn't spill out */
+}
+
+.arrow-advice .hero_icons{
+    width: 24px;
+    height: 24px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow-advice .hero_icons .arrow{
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    transition: transform .4s ease, opacity .4s ease;
+}
+
+.arrow-advice .arrow1{
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.arrow-advice .arrow2{
+    transform: translateX(-25px);
+    opacity: 0;
+}
+
+.arrow-advice:hover .arrow1{
+    transform: translateX(25px);
+    opacity: 0;
+}
+
+.arrow-advice:hover .arrow2{
+    transform: translateX(0);
+    opacity: 1;
+}
+/* value */
+
+.value_section{
+    background-color: #002B49;
+     background-image: url(../images/Frame-811111.webp);
+    background-size: cover;
+    background-position:center;
+
+}
+.value-container{
+    padding: 80px 29px;
+    /* max-width: 1398px; */
+    margin: 0px auto;
+    justify-content:center ;
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     gap: 70px;
+     align-items: center;
+    padding-top: 88px;   /*added last */
+     padding-bottom: 97px;
+}
+
+.value-container h1{
+color: #FFF;
+text-align: center;
+font-size: 50px;
+font-style: normal;
+font-weight: 700;
+line-height: 40px;
+
+}
+
+.value-card-sec{
+  display: grid;
+height: 400px;
+row-gap: 24px;
+column-gap: 24px;
+align-self: stretch;
+grid-template-rows: repeat(1,minmax(0,1fr));
+grid-template-columns: repeat(4,minmax(0,1fr));
+
+
+}
+
+.value-card{
+    max-width: 331.5px;
+height: 400px;
+/* grid-row: 1 / span 1;
+grid-column: 1 / span 1; */
+ border-radius: 24px;
+ position: relative;
+  overflow: hidden;
+
+}
+.card-content{
+    display: flex;
+
+flex-direction: column;
+align-items: flex-start;
+gap: 20px;
+padding-top: 34px;
+padding-left: 32px;
+padding-right: 31.5px;
+}
+
+.card-content h1{
+    color: #FFF;
+
+font-size: 140px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+
+
+display: flex;
+height: 114px;
+flex-direction: column;
+justify-content: center;
+
+
+
+
+}
+.card-1{
+   
+background: #006fa2;
+}
+
+
+.card-content h3{
+    color: #FFF;
+font-size: 30px;
+font-style: normal;
+font-weight: 700;
+line-height: 42px;
+
+}
+.card-content p{
+color: rgba(255, 255, 255, 0.90);
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: 35px;
+}
+.card-subcontent{
+    gap: 10px;
+    display:flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+
+.card-2{
+   background: #56c1a7;
+   max-width: 331.5px;
+
+}
+.card-content-2,.card-content-4{
+    padding-top: 16px;
+}
+.card-content-2 h1,.card-content-2 h3,.card-content-2 p{
+    color: #002B49;
+}
+.card-content-2 h1{
+    height: 114px;
+     align-self: flex-end; 
+}
+.card-3{
+    background: #fed103;
+     
+}
+.card-content-3 h1,.card-content-3 h3,.card-content-3 p{
+    color: #002B49;
+}
+.card-4{
+  background: #cb060d;
+     
+}
+
+.card-content-4 h1,.card-content-4 h3,.card-content-4 p{
+    color: white;
+}
+.card-content-4 h1 {
+    height: 114px;
+    align-self: flex-end;
+   
+}
+
+.value_btn{
+    max-width: 201px;
+}
+
+.value-wave{
+    display: flex;
+}
+
+.value-wave svg {
+    display: block;
+    flex: 1;
+    width: 100%;
+    height: auto;
+    max-height: 163px;
+}
+
+.value-bg{
+    position: absolute;
+    top: 17px;
+    right: 4px;
+    opacity: 0.06;
+    z-index: 1;
+}
+.value-bg1{
+    position: absolute;
+    top: 150px;
+    right: 120px;
+    opacity: 0.08;
+    z-index: 1;
+    fill: #FFF;
+    
+}
+
+.value-bg2{
+    position: absolute;
+    top: 0px;
+    left: 123px;
+    z-index: 1;
+    fill: #000;
+    opacity: 0.06;
+}
+
+.value-bg3{
+    position: absolute;
+    top: 180px;
+    bottom: -85px;
+    left: -56.5px;
+    z-index: 1;
+    fill: white;
+    opacity: 0.06;
+}
+
+.card-content{
+    position: relative;
+    z-index: 2;
+}
+
+
+
+
+/* memenbership section*/
+
+.membership_section{
+    background-color: #FFF;
+}
+
+.membership_wrapper{
+    width: 100%;
+    padding-left: 27px;
+    padding-right: 4px;
+    display: flex;
+    /* gap: 127px; */
+    gap: 100px;
+}
+.memebership_content{
+    display: flex;
+    flex-direction: column;
+    gap:21px;
+    padding-top: 41px;
+    max-width: 720px;
+   
+}
+.membership_content1{
+    display: none;
+}
+.membership_content1 h2{
+       color: #000;
+font-size: 50px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+display: none;
+}
+.membership_content1 span{
+       background: #fed103;
+       padding: 5px 7px 3px 10px;
+       border-radius: 10px;
+}
+.memebership_content h2{
+    color: #000;
+font-size: 50px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.memebership_content span{
+       background: #fed103;
+       padding: 4px 5px 3px 7px;
+       border-radius: 10px;
+       margin-left: -7px;
+}
+.memebership_content p{
+    color: #000;
+
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 39px; 
+}
+.support_details{
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    height: 47px;
+    align-items: center;
+}
+.support_content-1{
+    display: flex;
+    gap: 7px;
+    align-items: center;
+     white-space: nowrap;
+}
+.support_content-1 p{
+      color: #000;
+
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: 35px;
+}
+.left-section1{
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+    padding-bottom: 77.14px;
+    max-width: 720px;
+    width: 100%;
+}
+.membership_btn{
+  max-width: 319px;
+}
+.membership_right{
+    padding-top: 14px;
+}
+
+.membership_right img{
+    display: block;
+    width: 100%;
+    /* max-width: 579px; */
+    height: auto;
+
+    /*deveoper*/
+    max-width: 602px;
+}
+
+
+.knowledge_section{
+     background-color: #002B49;
+     background-image: url(../images/Blue-Background.webp);
+     background-size: cover;
+     background-position: center;
+}
+
+.knowledge_wrapper{
+    padding-left: 27px;
+    padding-right: 24px;
+    padding-top: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 61px;
+    align-items: center;
+    max-width: 1458px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.knowledge_heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 40px;
+    max-width: 1398px;
+    flex-wrap: wrap;   /* box drops below heading on narrow screens */
+}
+
+.knowledge_heading h2{
+    color: #FFF;
+    font-size:50px;
+    font-weight: 700;
+    line-height: normal;
+    flex: 1 1 280px;
+    margin: 0;
+}
+
+.knowledge_box{
+    display: inline-flex;
+    padding: 14px 25px 14px 18px;
+    justify-content: center;
+    align-items: center;
+    gap: 17px;
+    border-radius: 24px;
+    border: 4px solid #FFF;
+    background: var(--Blue, #006FA2);
+    max-width: 654px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.knowledge_box p{
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 35px; 
+    max-width: 580px;
+    margin: 0;
+}
+
+.knowledge_card{
+    display: flex;
+    width: 100%;
+    max-width: 1398px;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;      /* ← removes forced single-row overflow */
+}
+
+.know_card1{
+    display: flex;
+    flex: 1 1 300px;      /* grows/shrinks between 300px and max-width */
+    max-width: 454px;
+    /* padding: clamp(20px, 3vw, 34px); */
+    padding: 34px;
+    max-height: 533px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    border-radius: 24px;
+    border: 4px solid #FFF;
+    background: #FFF;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+.head-card{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    gap: 12px;
+}
+
+.head-card h2{
+    color: #000;
+    /* font-size: clamp(20px, 2.2vw, 30px); */
+   
+    /* line-height: 1.3; */
+    width: auto;
+    max-width: none;
+    flex: 1;
+    margin: 0;
+    transition: color 0.3s ease;
+
+font-size: 30px;
+font-style: normal;
+font-weight: 700;
+line-height: 42px;
+}
+
+.know_card1 p{
+    color: rgba(0, 0, 0, 0.90);
+    margin: 0;
+    transition: color 0.3s ease;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 39px;
+}
+
+.know_card1 img{
+    max-width: 100%;
+    /* max-width: 378px; */
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+.head-card-line{
+    width: 100%;
+    height: 3px;
+    display: block;
+}
+
+.head-card-img{
+    display: flex;
+    width: 70px;
+    height: 70px;
+    min-width: 70px;      /* prevents squishing when h2 wraps to 2 lines */
+    padding: 9.771px 10.73px 10.732px 9.772px;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1/1;
+    border-radius: 100px;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+}
+
+.corner-arrow{
+    transition: transform 0.35s ease, opacity 0.35s ease;
+}
+.corner-arrow1{ position: relative; }
+.corner-arrow2{
+    position: absolute;
+    top: 9.771px;
+    left: 9.772px;
+    transform: translate(-30px, 30px);
+    opacity: 0;
+}
+.know_card1:hover .corner-arrow1{
+    transform: translate(30px, -30px);
+      stroke: black;
+    opacity: 0;
+}
+.know_card1:hover .corner-arrow2{
+    transform: translate(0, 0);
+      stroke: black;
+      fill: #000;
+    opacity: 1;
+}
+.know_card1:hover{
+background: rgba(0, 0, 0, 0.20);
+}
+.know_card1:hover .head-card h2{
+    color: #fff;
+}
+.know_card1:hover p{
+    color: #fff;
+}
+.head-card-line path{
+    stroke: #000;
+    transition: stroke 0.3s ease;
+}
+/* .know_card1:hover{
+    border: none;
+} */
+
+.know_card1:hover .head-card-line path{
+    stroke: #fff;
+}
+.know_card1:hover .head-card-img{
+    background-color: white;
+}
+.know_card1:hover .corner-arrow1 path,
+.know_card1:hover .corner-arrow2 path{
+    fill: #000 !important;
+}
+.knowledge_btn{
+    max-width: 237px;
+    width: 100%;
+    
+}
+
+.knowledge_bt{
+    padding-top: 65px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 61px;
+}
+.knowledge_bot svg{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+/* ---- footer_section ---- */
+
+.footer_section{
+    /* padding-left: 24px;
+    padding-right: 24px;
+    margin: 0 auto; */
+    width: 100%;
+    background: #002B49;
+    position: relative;
+}
+.footer-top{
+    height: 264px;
+    background: #D7EDF8;
+}
+.footer-content{
+      /* padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 217px; */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+        gap: 66px;
+    padding-bottom: 59px;
+    width: 100%;    /* total width */
+    /* padding: 217px 24px 59px;  */
+    padding: 217px 28px 59px 28px;
+}
+.logo-vision{
+    max-width:326px;
+ 
+color: #FFF;
+padding-top: 19px;
+font-size: 15px;
+font-style: normal;
+font-weight: 400;
+line-height: 34px;
+}
+.logo-vision p{
+    height: 129px;
+}
+.social_media{
+    padding-top: 29px;
+    display: inline-flex;
+align-items: center;
+gap: 12px;
+}
+.social_icon{
+    display: flex;
+width: 32px;
+height: 32px;
+justify-content: center;
+align-items: center;
+border-radius: 16777200px;
+border: 1px solid #FFF;
+}
+.foot-middle{
+    display: flex;
+    justify-content: space-between;
+    gap: 36px;
+    max-width: 748px;
+    padding-top: 9px;
+}
+.foot-menu1{
+  display: flex;
+  gap: 19px;
+  flex-direction: column;
+
+}
+.foot-menu1 h2{
+    color: #FFF;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: 35px;
+}
+.foot-menuitems{
+display: flex;
+flex-direction: column;
+gap: 13px;
+ color: #C5D5DF;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 39px;
+}
+
+
+   .footer-menu-item{
+    display: flex;
+    height: 24px;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    overflow: hidden;   /* clips any line-height overflow from the h4 inside */
+}
+
+
+.foot-menuitems h4{
+    color: #C5D5DF;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 39px;   /* keep this, don't shrink it */
+    margin: 0;
+    white-space: nowrap;
+}
+.foot_btn{
+  border: 2px solid white;
+ background: #002B49;
+}
+.foot_btn span{
+     background: #002B49;
+}
+
+
+
+.top-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.top-icons{
+    position: relative;
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+}
+
+.top-arrow{
+    position: absolute;
+    left: 0;
+    transition: transform 0.4s ease;
+}
+
+.top-arrow-1{
+    transform: translateY(0);
+}
+
+.top-arrow-2{
+    transform: translateY(100%);
+}
+
+.top-btn:hover .top-arrow-1{
+    transform: translateY(-100%);
+}
+
+.top-btn:hover .top-arrow-2{
+    transform: translateY(0);
+}
+html {
+    scroll-behavior: smooth;
+}
+
+.divider{
+    width: 100%;
+    max-width: 1398px;
+    margin: 0 auto;
+    line-height: 0;
+}
+
+.divider svg{
+    display: block;
+    width: 100%;
+    height: 2px;
+}
+.footer_ends{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    max-width: 1398px;
+    padding-top: 29px;
+    padding-bottom: 34px;
+     flex-wrap: wrap; 
+     gap: 10px;
+}
+.footer_rights{
+color: #FFF;
+
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 39px;
+max-width: 456px;
+}
+
+.footer_policy{
+    display: flex;
+    gap: 18px;
+
+    color: #C5D5DF;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 39px;
+}
+.footer_policy h4{
+    color: #C5D5DF;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 39px;
+}
+
+.footer_love{
+ align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.footer_love svg{
+    
+    height: 18px;
+    display: block;
+}
+
+.footer_love h4{
+       color: #C5D5DF;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 39px;
+}
+
+.footer_form{
+    max-width: 1400px;
+    width: 100%;
+    /* padding: 45px 91px 49px 51px; */
+    padding: 47px 91px 52px 53px;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    gap: 112px;
+    border-radius: 24px;
+        background: #FFF;
+        box-shadow: 0 5px 30.7px 10px rgba(0, 43, 73, 0.09);
+
+        position: absolute;
+        top: 79px;
+        left: 260px;
+        z-index: 2;
+}
+
+.form-left{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 484px;
+    padding-top: 14px;
+}
+.form-left h1{
+color: #000;
+
+font-size: 30px;
+font-style: normal;
+font-weight: 700;
+line-height: 42px;
+}
+.form-left p{
+    color: rgba(0, 0, 0, 0.90);
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 41px;
+}
+/* .form-right{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    max-width: 660px;
+} */
+
+.form-right{
+     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-1{
+      width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+.form-right1{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+.form-right1 h2{
+    color: #000;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: 35px;
+max-width: 330px;
+}
+
+.form-right1 input{
+    width: 100%;
+    border-radius: 10px;
+background: #D7EDF8;
+
+height: 50px;
+border: none;
+}
+
+.form-details{
+    display: flex;
+    gap: 22px;
+    flex-direction: row;
+    
+}
+.form-right2{
+    flex: 1;
+}
+.footer_wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.social_icon:hover{
+    background-color: #0095DA;
+}
+
+/* .foot-menuitems h4{
+    color: #C5D5DF;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 39px;
+    margin: 0; 
+} */
+
+
+.first-vector{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: block;
+    aspect-ratio: 1920 / 152;
+    max-height: 152px;
+    height: auto;
+    
+}
+
+
+html, body{
+  height: 100%;
+  overflow-y: scroll;        /* keep scrolling enabled */
+  overflow-x: hidden;        /* prevent horizontal scrollbar/shift */
+  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge (legacy) */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar{
+  display: none;             /* Chrome, Safari, Edge (Chromium) */
+}
+
+
+.autis-mob span{
+    background-color: #fed103;
+}
+
+.autism-submenu a{
+    max-width: 245px;
+}
+.video-submenu a{
+    max-width: 230px;
+}
+.skills-submenu a{
+    max-width: 230px;
+}
+.foot-menu-2{
+    padding-right: 50px;
+}
+.foot-btn_sec{
+    padding-top: 18px;
+    padding-left: 16px;
+}
+.form-left span{
+    color: rgba(0, 0, 0, 0.90);
+
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: 41px;
+text-decoration-line: underline;
+}
+
+@media (max-width: 1500px) {   /* was 1400px */
+
+  .header-container{
+    justify-content: space-between;
+    height: 120px;
+    /* margin: 30px auto; */
+    padding: 0px 24px 0px 20px;
+    border-radius: 24px;
+  }
+
+  .header-container:has(.nav-link:hover){
+    border-radius: 24px 24px 0 0;
+  }
+
+  .logo{
+    width: 160px;
+    height: 68px;
+  }
+
+  .navbar{
+    gap: 24px;
+    margin-left: 0;
+  }
+
+  .navbar a{
+  
+    line-height: 30px;
+  }
+
+  .header-right{
+    gap: 12px;
+    margin-left: 0;
+  }
+
+  .flag-link,
+  .vector{
+    width: 44px;
+    height: 44px;
+  }
+
+  .contact-btn{
+    padding: 10px 12px;
+    font-size: 16px;
+  }
+
+
+
+  /* ...rest of this block unchanged... */
+}
+
+@media (max-width: 1400px) {
+
+    .header-container{
+    height: 120px;
+    /* margin: 30px auto; */
+    padding: 0px 24px 0px 20px;
+    border-radius: 24px;
+  }
+
+  .header-container:has(.nav-link:hover){
+    border-radius: 24px 24px 0 0;
+  }
+
+  .logo{
+    width: 160px;
+    height: 68px;
+  }
+
+  .navbar{
+    gap: 24px;
+    /* was 77px */
+  }
+
+  .navbar a{
+   
+    line-height: 30px;
+  }
+
+  .header-right{
+    gap: 12px;
+  }
+
+  .flag-link,
+  .vector{
+    width: 44px;
+    height: 44px;
+  }
+
+  .contact-btn{
+    padding: 10px 12px;
+    font-size: 16px;
+  }
+
+.hub-main-img{
+    height:auto;
+}
+.mega-hub{
+    gap: 20px;
+}
+
+
+
+
+
+  .hero .container{
+    padding-top: 300px;
+  }
+
+
+  .autism_class{
+    gap: 0px;
+  }
+  .autism-content {
+    gap:35px;
+  }
+
+    .autism_section{
+    max-height: none;
+   }
+
+   .image-card img{
+
+    width: 300px;
+    position: absolute;
+   }
+
+
+
+
+
+   /*  advice_section  */
+
+ .advice_main{
+    gap: 60px;
+
+ }
+ .advice_left{
+    gap: 50px;
+ }
+ .advice_content11{
+gap: 70px;
+ }
+ .advice_head h2{
+    font-size: 40px;
+ }
+
+
+
+
+/* value section */
+.value-card-sec{
+    grid-auto-flow: row;
+}
+.card-content{
+    padding-left: 10px;
+    gap: 0px;
+}
+.left-section1{
+    gap: 77px;
+}
+.membership_wrapper{
+    align-items: center;
+    gap: 30px;
+}.membership_right img {
+    min-width: 400px;
+}
+
+/*footer */
+
+
+    .foot-middle{
+        gap: 10px;
+    }
+       .footer-content{
+        gap: 10px;
+         flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 1240px){
+
+.navbar a{
+    font-size: 15px;
+}
+}
+
+
+
+@media (max-width: 1200px){
+
+  .header-container{
+    padding: 0px 15px 0px 10px;
+    border-radius: 24px;
+  }
+
+  .navbar{
+    gap: 11px;
+  
+  }
+
+
+
+  .header-right{
+    gap: 9px;
+    align-items: center;
+   
+  }
+
+  .contact-btn{
+    font-size: 14px;
+    padding: 9px 5px;
+    gap: 4px;
+  }
+
+ 
+
+  /* ...rest unchanged... */
+
+
+
+  /* ================= MEGA MENU ================= */
+
+  .autism-mega-menu .mega-menu-inner,
+  .advice-mega-menu .mega-menu-inner,
+  .hub-mega-menu .mega-menu-inner{
+    padding: 24px 28px 24px 24px;
+    gap: 28px;
+  }
+
+  .mega-card{
+    width: 260px;
+    height: 360px;
+    padding: 22px 18px;
+    gap: 14px;
+  }
+
+  .mega-card .inner-card{
+    width: 220px;
+    gap: 16px;
+  }
+
+  .inner-card-content h3{
+    font-size: 16px;
+  }
+
+  .inner-card-content p{
+    font-size: 13px;
+    line-height: 24px;
+    margin-bottom: 18px;
+  }
+
+  .mega-links{
+    gap: 30px;
+  }
+
+  .mega-links-col{
+    gap: 14px;
+  }
+
+  .mega-link-item{
+    gap: 14px;
+    padding: 8px;
+  }
+
+  .mega-link-icon{
+    width: 70px;
+    height: 70px;
+    padding: 8px;
+  }
+
+  .mega-link-icon svg{
+    width: 30px;
+    height: 38px;
+  }
+
+  .mega-link-text h4{
+    font-size: 16px;
+  }
+
+  .mega-link-text p{
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .mega-hub{
+    gap: 24px;
+  }
+
+  .hub-container{
+    width: 220px;
+    height: 240px;
+    padding: 12px;
+    gap: 14px;
+  }
+
+  .hub-title h2{
+    font-size: 15px;
+  }
+
+  .hub-main-img{
+    height: 150px;
+  }
+
+      /* .hero {
+        min-height: 90vh;
+    } */
+
+
+ 
+
+     .autism_class{
+    gap: 0px;
+      /* max-height:none; */
+  }
+   .autism-img{
+    max-width: 530px;
+    width: 100%;
+  }
+  .autism-content h1{
+    font-size: 46px;
+  }
+  .autism-content p {
+    font-size:15px;
+  }
+  .autism-content {
+        gap: 30px;
+    }
+
+
+
+
+    /* value section */
+
+ .value-card{
+        max-width: 100%;
+        height: auto;
+        min-height: 280px;
+    }
+.value-card-sec{
+    display:grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: stretch;   /* explicit, in case something upstream changed it */
+    height: auto;
+    row-gap: 24px;
+    column-gap: 24px;
+    justify-content: center;
+}
+.card-content{
+    max-width: 100%;
+    padding: 32px;
+}
+.card-content h1{
+    font-size: 58px;
+    height: auto;
+}
+.card-subcontent {
+   display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    text-align: left;
+}
+.value-container{
+    padding: 80px 0px;
+}
+
+
+/* membership_section*/
+.memebership_content h2{
+     font-size: 45px;
+     line-height: 1.5;
+}
+
+
+
+/* knowledge_section */
+
+.knowledge_card{
+    gap: 20px;
+}
+.know_card1{
+     flex-basis: 300px; 
+     padding: 28px;
+     }
+
+.knowledge_heading h2{
+    font-size: 45px;
+}
+
+   /*  advice_section  */
+
+ .advice_main{
+    gap: 60px;
+
+ }
+ .advice_left{
+    gap: 10px;
+ }
+ .advice_content11{
+gap: 10px;
+ }
+ .advice_head h2{
+    font-size: 40px;
+ }
+
+
+
+
+ .form-details{
+    flex-direction: column;
+}
+    .footer-content{
+        padding-top: 320px;
+    }
+    .footer_ends{
+        justify-content: center;
+        gap: 30px;
+    }
+}
+
+
+
+
+
+
+@media (max-width: 1024px){
+
+ .header-container{
+    padding: 0px 35px 0px 35px;
+  }
+
+  .navbar{
+    display: none;
+  }
+
+  .contact-btn{
+    display: none;
+  }
+
+  .toggle_button{
+    display: flex;
+  }
+
+  .toggle_button svg{
+    width: 35px;
+    height: 25px;
+  }
+
+  .header-right{
+    gap: 15px;
+    align-items: center;
+    margin-left: auto;   /* navbar is hidden, so push header-right flush to the right */
+  }
+
+  .hero{
+    min-height: 86vh;
+  }
+     .hero .container{
+        padding-top: 300px;
+    }
+    /* .hero{
+        min-height: 80vh;
+    } */
+    .hero-content h1{
+        font-size: 55px;
+        line-height: 68px;
+    }
+    .hero_subcontent p{
+        font-size: 16px;
+        line-height: 30px;
+    }
+.autism-content1{
+  display: block;
+}
+.autism-content1 h1{
+  font-size: 40px;
+}
+.autism-content h1{
+  display: none;
+}
+
+  .autism_class{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .autism-img{
+    max-width: 480px;
+  
+    height: 490px;
+  }
+
+  .autism-content{
+    align-items: center;
+    margin-top: 0;
+    max-width: none;
+    gap: 30px;
+  }
+
+  .autism-content h1{
+    font-size: 38px;
+  }
+
+  .autism-content p{
+    font-size: 16px;
+    line-height: 32px;
+  }
+
+
+
+  /*membership_section*/
+
+  .membership_wrapper{
+    flex-direction: column;
+    padding-top: 88px;
+    gap: 20px;
+
+  }
+    .memebership_content1{
+        width: 100%;
+        display: block;
+        flex: 0 0 100%;
+        text-align: center;
+    }
+
+  .membership_content1 h2{
+    display: block;
+    font-size: 40px;
+    text-align: center;
+  }
+     .item1 {
+        order: 1;
+    }
+
+    .item3 {
+        order: 2;
+    }
+
+    .item2 {
+        order: 3;
+    }
+
+    .memebership_content h2{
+        display: none;
+    }
+    .left-section1{
+     align-items: center;
+     gap: 40px;
+     padding-bottom: 10px;
+    }
+    .memebership_content{
+              max-width: none;
+              padding-top: 0px;
+    }
+    .support_details{
+        justify-content: center;
+        gap: 10px;
+    }
+    /*knowledge_section */
+    
+    .know_card1{ flex-basis: 45%; max-width: 45%; }
+
+    .knowledge_heading h2{
+        text-align: center;
+    }
+    .knowledge_box{
+             max-width: none;
+    }
+    .knowledge_box p {
+        max-width: none;
+    }
+
+
+    /*advice section*/
+
+
+    .advice-body{
+        min-height: auto;
+        background-image: none;
+        /* background-color: #57c1a8; */
+         background-image: linear-gradient(
+        to bottom,
+        #57c1a8 0%,
+        #57c1a8 70%,
+        #dcfcf4 70%,
+        #dcfcf4 100%
+    );
+    }
+    .advice_main{
+        flex-direction: column;
+                align-items: center;
+    }
+    .advice_head{
+                 display: none;
+    }
+    .advice_head1{
+            display: block;
+            padding-top: 10px;
+        }
+    .advice_head1 h2{
+        text-align: center;
+    }
+   
+    .wave-right path{
+        fill: #56C1A7;
+  
+}
+.advice_left{
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    gap: 30px;
+}
+.arrow-main{
+    display: none;
+}
+.arrow_right_btn{
+    display: none;
+}
+.arrow-hide{
+    display: flex;
+    gap: 100px;
+}
+.arrow-img-main{
+    padding-top: 1px;
+}
+.advice_content11{
+    padding-top: 0px;
+}
+.advice_right {
+  
+  justify-items: center;
+}
+.advice_subcontent{
+  align-items: center;
+  max-width: none;
+  text-align: center;
+}
+.form-details{
+    flex-direction: column;
+}
+     .footer_form{
+        flex-direction: column;
+        gap: 20px;
+     }
+ .footer-content{
+            padding-top: 432px;
+         }
+.form-left{
+    max-width: none;
+}
+.footer-form{
+          top: 37px;
+}
+   .footer-top{
+    height: 400px;
+ }
+
+
+
+
+         /*hero section */
+
+            .hero .container{
+        padding-top: 300px;
+    }
+    .hero-content h1{
+        font-size: 55px;
+        line-height: 68px;
+    }
+    .hero_subcontent p{
+        font-size: 16px;
+        line-height: 30px;
+    }
+
+    .ags-image-frame{
+        max-width: 500px;
+    }
+}
+
+
+
+
+
+@media(max-width:767px){
+
+ .header-container{
+               padding: 0px 10px 0px 25px;
+               height: 90px;
+     }
+    .container{
+        padding: 0px 30px;
+    }
+     .hero{
+    min-height: 77vh;
+  }
+    .hero .container{
+        padding-top: 250px;
+    }
+ 
+    .hero-content{
+        padding-left: 0;
+        align-items: center;   /* centers children horizontally */
+        text-align: center;    /* centers the heading/paragraph text itself */
+    }
+    .hero-content h1{
+        font-size: 48px;
+        line-height: 50px;
+        margin-bottom: 24px;
+    }
+    .hero_subcontent{
+        margin-left: 0;
+    }
+    .hero_subcontent p{
+        color: #FFF;
+text-align: center;
+
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: 27px;
+    }
+    .hero-buttons{
+        flex-wrap: wrap;
+        justify-content: center;   /* centers the buttons row */
+        gap: 15px;
+        padding-left: 0;
+    }
+    .hero_buts{
+        padding: 10px 14px;
+    }
+    .hero_buts span{
+        font-size: 15px;
+    }
+
+
+.autism_class{
+   gap:15px;
+} 
+
+/*advice */
+    .advice_main{
+        gap: 119px;
+    }
+
+     .advice-body{
+        min-height: auto;
+        background-image: none;
+        /* background-color: #57c1a8; */
+         background-image: linear-gradient(
+        to bottom,
+        #57c1a8 0%,
+        #57c1a8 75%,
+        #dcfcf4 75%,
+        #dcfcf4 100%
+    );
+     }
+     
+    .advice_subcontent{
+        gap: 10px;
+    }
+    .advice_right{
+        padding-bottom: 10px;
+    }
+
+   
+
+/*footer*/
+   
+
+    .footer_form{
+        gap: 24px;
+        padding: 24px 16px;
+        margin: 16px auto;
+    }
+
+    .form-details{
+        flex-direction: column;
+        gap: 16px;
+    }
+     .footer-top{
+    height: 466px;
+ }
+
+
+    .footer-content{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 32px 20px;
+        gap: 32px;
+        padding-top: 327px;
+    }
+
+    .foot-middle{
+        flex-direction: column;
+        gap: 28px;
+        max-width: 100%;
+    }
+
+    .foot-menu1{
+        gap: 12px;
+    }
+
+    .foot-btn_sec{
+        width: 100%;
+    }
+
+    .top-btn{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .footer_ends{
+        padding-top: 16px;
+        padding-bottom: 24px;
+        align-items: center;
+    }
+
+    .footer_policy{
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+     .know_card1{ 
+        flex-basis: 100%; 
+        max-width: 100%;
+     }
+    .knowledge_wrapper{ 
+        padding-left: 20px;
+         padding-right: 20px;
+          padding-top: 56px;
+           gap: 48px;
+         }
+    .knowledge_heading{ 
+        gap: 24px;
+     }
+    .knowledge_box{ 
+        max-height: none
+     }
+     .know_card1 > div{
+        width: 100%;
+    }
+
+    .know_card1 img{
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;  
+         /* keeps aspect ratio clean if you also set a fixed height */
+    }
+    .itema4{
+         order: 1;
+    }
+     .itema1{
+         order: 2;
+    }
+     .itema2{
+         order: 3;
+    }
+     .itema3{
+         order: 4;
+    }
+    .head-card-img{
+        width: 50px;
+        height: 50px;
+        min-width: 0px;
+    }
+}
+
+@media(max-width:620px){
+       .advice-body{
+        min-height: auto;
+        background-image: none;
+        /* background-color: #57c1a8; */
+         background-image: linear-gradient(
+        to bottom,
+        #57c1a8 0%,
+        #57c1a8 73%,
+        #dcfcf4 73%,
+        #dcfcf4 100%
+    );
+     }
+}
+
+
+@media(max-width:567px){
+
+    /*austism section */
+         .autism-content1 h1 {
+        font-size: 32px;
+    }
+
+    .autism-img img{
+        max-width: 456px;
+    }
+        .autism-img{
+            height: 430px;
+            display: flex;
+            gap: 40px;
+        }
+            .autism_class{
+                gap: 30px;
+            }
+
+    .value-container{
+        gap:40px
+    }
+    .value-container h1{
+        font-size: 50px;
+    }
+    .value-card-sec{
+    display:grid;
+    grid-template-rows: repeat(1, 1fr);
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: stretch;   
+    height: auto;
+    row-gap: 30px;
+    column-gap: 30px;
+    justify-content: center;
+    padding: 0px 14px;
+}
+.value-card{
+    min-height: auto;
+}
+.card-content{
+    padding-top: 12px;
+        padding-bottom:24px;
+
+        padding-left: 30px;
+        padding-right: 30px;
+}
+
+
+
+/* memebership_section */
+
+ .membership_content1 h2{
+   
+    font-size: 32px;
+   
+  }
+  .memebership_content p {
+    font-size: 14px;
+  }
+        .support_content-1 p{
+ font-size: 16px;
+        line-height: 1.928;
+        }
+
+
+/* knowledge_section */
+
+.knowledge_wrapper{
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 40px; 
+    gap: 32px; 
+ }
+.know_card1{ 
+    padding: 20px;
+ }
+.knowledge_heading h2{
+    font-size: 28px;
+         }
+.head-card h2{ 
+    font-size: 25px;
+ }
+ .footer-top{
+    height: 424px;
+ }
+
+ .footer-content{
+       
+        padding-top: 420px;
+    }
+
+/*hero*/
+    .hero-content h1{
+        font-size: 45px;
+    }
+
+
+         .advice-body{
+        min-height: auto;
+        background-image: none;
+        /* background-color: #57c1a8; */
+         background-image: linear-gradient(
+        to bottom,
+        #57c1a8 0%,
+        #57c1a8 74%,
+        #dcfcf4 74%,
+        #dcfcf4 100%
+    );
+     }
+         .advice_main {
+        gap: 75px;
+    }
+
+
+
+    .mobile-menu-right .vector,.mobile-menu-right .flag-link {
+    width: 50px;
+    height: 45px;
+}
+
+}
+
+
+@media (max-width: 492px){
+         .autism-img {
+        max-width: 480px;
+        height: 300px;
+    }
+    .footer-top{
+        height: 374px;
+    }
+
+    .form-left h1{
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .form-left p{
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    .logo-vision{
+        font-size: 14px;
+        line-height: 26px;
+    }
+
+    .foot-menu1 h2{
+        font-size: 16px;
+    }
+
+    .foot-menuitems h4{
+        font-size: 14px;
+        line-height: 30px;
+    }
+
+    .footer-menu-item{
+        height: auto;
+    }
+
+           .advice_main {
+        gap: 85px;
+    }
+    .advice-body{
+           background-image: linear-gradient(
+        to bottom,
+        #57c1a8 0%,
+        #57c1a8 68%,
+        #dcfcf4 68%,
+        #dcfcf4 100%
+    );
+    }
+     
+ .footer-content{
+       
+        padding-top: 400px;
+    }
+     }
+
+
+
+
+
+@media (max-width: 390px){
+  
+        .container {
+        padding: 0px 10px;
+        }
+    .logo{
+      
+        height: 50px;
+        width: 120px;
+        align-items: center;
+    }
+        .header-container{
+            padding: 0px 10px 0px 10px;
+        }
+        .flag-link, .vector{
+            width: 33px;
+            height: 33px;
+        }
+        .flag-img{
+            width: 21px;
+            height: 11px;
+        }
+
+ .hero-content h1{
+                    color: #FFF;
+            text-align: center;
+
+            font-size: 40px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 55px;
+            }
+
+
+    .hero_subcontent p {
+               
+            color: #FFF;
+text-align: center;
+
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: 27px; 
+    }
+}
+
+
+
+/* ================================
+   RESPONSIVE — FOOTER SECTION
+   ================================ */
+
+@media (max-width: 1700px){
+
+    .footer_form{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 65px);
+        max-width: 1398px;
+    }
+
+    .footer-content{
+        gap: 30px;
+    }
+   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

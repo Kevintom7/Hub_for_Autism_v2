@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Stretchy Rounded Header + Megamenu</title>
+<style>
+  :root {
+    --radius: 20px;
+    --nav-height: 60px;
+    --bg: #101114;
+    --panel: #1a1b1f;
+    --text: #e9e9ec;
+    --muted: #9a9aa2;
+    --accent: #7c9eff;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(circle at 50% -10%, #23242b, var(--bg) 60%);
+    font-family: -apple-system, "Inter", system-ui, sans-serif;
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    padding-top: 48px;
+  }
+
+  /* ---- The whole trick lives here ---- */
+  .navbar {
+    position: relative;
+    width: 640px;
+    background: var(--panel);
+    border-radius: var(--radius);      /* radius is CONSTANT no matter the height */
+    overflow: hidden;                   /* clips the megamenu content while collapsed */
+    box-shadow: 0 20px 40px -20px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.05);
+
+    /* animate height smoothly */
+    transition: height .38s cubic-bezier(.4,0,.2,1);
+    height: var(--nav-height);          /* collapsed height */
+  }
+
+  .navbar:has(.nav-item.has-mega:hover),
+  .navbar:has(.mega-panel:hover) {
+    height: 320px;                      /* expanded height -> bottom stretches down,
+                                            corners stay rounded automatically */
+  }
+
+  .nav-row {
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 10px;
+  }
+
+  .nav-item {
+    position: relative;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 14px;
+    color: var(--muted);
+    cursor: pointer;
+    transition: background .2s, color .2s;
+  }
+  .nav-item:hover { background: rgba(255,255,255,.06); color: var(--text); }
+
+  .mega-panel {
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 20px 24px;
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity .25s ease .08s, transform .25s ease .08s;
+  }
+
+  /* only reveal the panel that belongs to the hovered item */
+  .navbar:has(.nav-item.has-mega:nth-of-type(1):hover) .mega-panel[data-for="1"],
+  .navbar:has(.nav-item.has-mega:nth-of-type(2):hover) .mega-panel[data-for="2"],
+  .mega-panel:hover {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .mega-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .mega-card {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 12px;
+    padding: 14px;
+  }
+  .mega-card h4 { margin: 0 0 6px; font-size: 13px; color: var(--text); }
+  .mega-card p { margin: 0; font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+  .hint {
+    margin-top: 28px;
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+    max-width: 500px;
+  }
+</style>
+</head>
+<body>
+
+  <div>
+    <nav class="navbar">
+      <div class="nav-row">
+        <div class="nav-item has-mega">Product</div>
+        <div class="nav-item has-mega">Solutions</div>
+        <div class="nav-item">Docs</div>
+        <div class="nav-item">Pricing</div>
+      </div>
+
+      <div class="mega-panel" data-for="1">
+        <div class="mega-grid">
+          <div class="mega-card"><h4>Overview</h4><p>What the product does and who it's for.</p></div>
+          <div class="mega-card"><h4>Integrations</h4><p>Connect the tools your team already uses.</p></div>
+          <div class="mega-card"><h4>Changelog</h4><p>See what shipped this week.</p></div>
+        </div>
+      </div>
+
+      <div class="mega-panel" data-for="2">
+        <div class="mega-grid">
+          <div class="mega-card"><h4>Startups</h4><p>Move fast without breaking the budget.</p></div>
+          <div class="mega-card"><h4>Enterprise</h4><p>Security and scale, built in.</p></div>
+          <div class="mega-card"><h4>Agencies</h4><p>Ship client work faster.</p></div>
+        </div>
+      </div>
+    </nav>
+
+    <p class="hint">Hover "Product" or "Solutions" — the pill's bottom edge stretches down while both corners stay rounded, because border-radius is fixed and only the box height animates.</p>
+  </div>
+
+</body>
+</html>
