@@ -25,6 +25,47 @@ document.querySelectorAll('.mobile-nav-toggle').forEach(btn => {
   });
 });
 
+// Close mobile menu when screen width is greater than 1024px
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 1024) {
+    overlay.classList.remove('active');
+    document.body.classList.remove('menu-open');
+
+    // Close all opened dropdowns
+    document.querySelectorAll('.mobile-nav-item.open').forEach(item => {
+      item.classList.remove('open');
+    });
+  }
+});
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const header = document.querySelector('.header-container');
+  const mobileBreakpoint = window.matchMedia('(max-width: 1024px)');
+
+  function closeAllMegaMenus() {
+    header.style.removeProperty('--expand-height');
+    activeMenu = null;
+    // extra safety: blur any focused nav link so :focus-within can't hold it open either
+    if (document.activeElement && document.activeElement.closest('.navbar')) {
+      document.activeElement.blur();
+    }
+  }
+
+  // Fires whenever you cross the 1024px line, in either direction
+  mobileBreakpoint.addEventListener('change', (e) => {
+    if (e.matches) {
+      closeAllMegaMenus();
+    }
+  });
+
+  // ... rest of your existing ResizeObserver / activeMenu code ...
+});
+
+
+
+
 
 
 /* ============================================

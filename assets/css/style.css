@@ -49,906 +49,1035 @@ img{
     HEADER
 ==========================*/
 
-.header{
 
-    width:100%;
-    position:absolute;
-    top: 46px;
-    left:0;
-    z-index:100;
+        .header {
 
-}
+            width: 100%;
+            position: absolute;
+            top: 46px;
+            left: 0;
+            z-index: 100;
 
-
-
-.header-container{
-
-    background:#fff;
-
-    display:flex;
-
-    align-items:center;
-
-    /* justify-content:space-between; */
-    justify-content: flex-start;
-    height: 150px;
-    margin: 0px auto;
-
-    /* padding:18px 30px; */
- padding: 0px 33px 0px 29px; /* Top Right Bottom Left */
-   border-radius: 30px;
-   box-shadow: 0 4px 30px 0 rgba(0, 43, 73, 0.15);
-
-    /* box-shadow:0 10px 25px rgba(0,0,0,.12); */
-
-     position: relative; 
-      transition: border-radius 0s;
-
-}
-
-/* When a mega menu inside the header is open, flatten the bottom
-   corners so the dropdown reads as a seamless extension of the header */
-.header-container:has(.nav-link:hover){
-    border-radius: 30px 30px 0 0;
-     transition: border-radius 0s;
-}
+        }
 
 
 
-.logo{
+        .header-container {
+
+            background: #fff;
+
+            display: flex;
+
+            align-items: flex-start;
+            /* CHANGED: was center. Keeps the top row pinned
+                                         to the top edge while the box grows downward */
+
+            justify-content: flex-start;
+            height: 150px;
+            /* CHANGED: was a hard-coded 150px */
+            margin: 0px auto;
+
+            padding: 0px 33px 0px 29px;
+            /* Top Right Bottom Left */
+            border-radius: 30px;
+            box-shadow: 0 4px 30px 0 rgba(0, 43, 73, 0.15);
 
 
-width: 201px;
-height: 84px;
-display: block;
+            position: relative;
+            overflow: hidden;
+            /* NEW: clips the mega-menu while collapsed, this is
+                                          what makes the "stretch" read as one solid pill */
+            flex-wrap: wrap;
+            /* NEW: lets header-row + mega-menu stack vertically */
+            transition: height .38s cubic-bezier(.4, 0, .2, 1);
+            /* NEW: animate the height itself */
 
-}
+        }
 
+        /* NEW: the box grows tall enough to reveal whichever mega-menu is open.
+   Because border-radius never changes, all 4 corners stay rounded the whole time —
+   exactly the "stretchy pill" trick from the reference file. */
+        .header-container:has(.nav-link:hover) {
+            height: 680px;
+        }
 
-
-.navbar{
-
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    gap: 37px;
-      margin-left: 77px;
-}
-
-.navbar a{
-
-    text-decoration:none;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 35px;
-    color: var(--text-color);
-    transition:.3s;
-
-}
-
-.navbar a:hover{
-    color: var(--primary-color) ;
-}
-
-.arrow-class{
-    display: flex;
-align-items: center;
-gap: 6px;
-}
-
-.arrow_down{
-    /* padding: 6.5px 0px 6.5px 0px; */
-      width: 10px;
-      height: 24px;
-    display: flex;
-    /* background-color: #0095DA; */
-    align-items: center;
-
-}
+        .nav-link {
+            height: 150px;
+            display: flex;
+            align-items: center;
 
 
-.arrow_down img{
-    width: 8px;
-    height: 8px;
-    transition: transform 0.3s ease;
+            /* no position: relative here */
+        }
 
-}
-.arrow-class:hover .arrow_down img {
-    transform: rotateX(180deg);
-}
+        .logo {
 
-.arrow_down svg{
-   
-    transition: transform 0.3s ease;
 
-}
-.arrow-class:hover .arrow_down svg {
-    transform: rotateX(180deg);
-  
-}
-.arrow-class:hover .arrow_down svg path{
-    fill: #0095DA;
-}
-/*==========================
+            width: 201px;
+            height: 84px;
+            display: block;
+
+        }
+
+
+        /* NEW: wraps logo + navbar + header-right so they keep a fixed height
+   and never get squashed/stretched while .header-container grows */
+        .header-row {
+            width: 100%;
+            height: 150px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+
+        .navbar {
+
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 37px;
+            margin-left: 77px;
+        }
+
+        .navbar a {
+
+            text-decoration: none;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 35px;
+            color: var(--text-color);
+            transition: .3s;
+
+        }
+
+        .navbar a:hover {
+            color: var(--primary-color);
+        }
+
+        .arrow-class {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .arrow_down {
+            /* padding: 6.5px 0px 6.5px 0px; */
+            width: 10px;
+            height: 24px;
+            display: flex;
+            /* background-color: #0095DA; */
+            align-items: center;
+
+        }
+
+
+        .arrow_down img {
+            width: 8px;
+            height: 8px;
+            transition: transform 0.3s ease;
+
+        }
+
+        .arrow-class:hover .arrow_down img {
+            transform: rotateX(180deg);
+        }
+
+        .arrow_down svg {
+
+            transition: transform 0.3s ease;
+
+        }
+
+        .arrow-class:hover .arrow_down svg {
+            transform: rotateX(180deg);
+
+        }
+
+        .arrow-class:hover .arrow_down svg path {
+            fill: #0095DA;
+        }
+
+        /*==========================
     RIGHT SIDE
 ==========================*/
 
-.header-right{
+        .header-right {
 
-    display: inline-flex;
-    align-items: flex-start;
-    gap: 15px;
-    margin-left: auto;
+            display: inline-flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-left: auto;
 
-}
+        }
 
 
-/*==========================
+        /*==========================
     LANGUAGE BUTTON
 ==========================*/
 
-.flag-link {
-    display: flex;
-    width: 50px;
-    height: 50px;
-    justify-content: center;
-    align-items: center;
-    aspect-ratio: 1/1;
-    border-radius: 10px;
-    background: #D7EDF8;
-}
+        .flag-link {
+            display: flex;
+            width: 50px;
+            height: 50px;
+            justify-content: center;
+            align-items: center;
+            aspect-ratio: 1/1;
+            border-radius: 10px;
+            background: #D7EDF8;
+        }
 
-.flag-img {
-    width: 33px;
-    height: 20px;
-    flex-shrink: 0;
-    aspect-ratio: 33/20;
-}
+        .flag-img {
+            width: 33px;
+            height: 20px;
+            flex-shrink: 0;
+            aspect-ratio: 33/20;
+        }
 
 
-.vector{
-    display: flex;
-width: 50px;
-height: 50px;
-padding: 11px;
-justify-content: center;
-align-items: center;
-aspect-ratio: 1/1;
-border-radius: 10px;
-background-color: var(--primary-color);
-}
-.vector:hover{
-    background-color: var(--text-color);
-}
+        .vector {
+            display: flex;
+            width: 50px;
+            height: 50px;
+            padding: 11px;
+            justify-content: center;
+            align-items: center;
+            aspect-ratio: 1/1;
+            border-radius: 10px;
+            background-color: var(--primary-color);
+        }
 
-.vector img{
-    width: 20px;
-height: 24px;
-color: var(--background-color);
-} 
+        .vector:hover {
+            background-color: var(--text-color);
+        }
 
-/*==========================
+        .vector img {
+            width: 20px;
+            height: 24px;
+            color: var(--background-color);
+        }
+
+        /*==========================
     CONTACT BUTTON
 ==========================*/
 
-.contact-btn{
+        .contact-btn {
 
-    text-decoration:none;
-    display: inline-flex;
-    padding: 12px 15px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border-radius: 10px;
-    background: #DF0B13;
-     color: var(--background-color);
-
-
-text-align: center;
-/* B */
-font-size: 18px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-}
-
-.contact-btn-div img{
-    width: 22.005px;
-height: 22.005px;
- transition: transform 0.4s ease;
-}
-
-.contact-btn-div{
-    width: 24px;
-    height: 24px;
-}
-    
-
-.contact-btn:hover img {
-    transform: rotate(90deg);
-}
-
-.toggle_button{
-    width: 24px;
-    height: 24px;
-    display: none;
-      cursor: pointer;
-  align-items: center;
-  justify-content: center;
-}
-/* .toggle_button{
-  display: none;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-} */
-
-.mobile-menu-overlay{
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: #FFF;
-  z-index: 2000;
-  overflow-y: auto;
-  padding: 24px 20px 40px;
-}
-
-.mobile-menu-overlay.active{
-  display: block;
-}
-
-body.menu-open{
-  overflow: hidden;
-}
-
-.mobile-menu-top{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.mobile-menu-top .logo img{
-  width: 130px;
-  height: auto;
-}
-
-.mobile-menu-right{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.mobile-menu-right .flag-link,
-.mobile-menu-right .vector{
-  width: 60px;
-  height: 54px;
-}
-
-.mobile-menu-close{
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.mobile-nav-list{
-  border-top: 1px solid rgba(0,0,0,0.08);
-  margin-bottom: 20px;
-}
-
-.mobile-nav-item{
-  border-bottom: 1px solid rgba(0,0,0,0.08);
-}
-
-.mobile-nav-item > a{
-  display: block;
-  padding: 14px 4px;
- color: #33302C;
-font-size: 16px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-text-decoration: none;
-}
-
-.mobile-nav-toggle{
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 4px;
-  background: none;
-  border: none;
-   font-family: "Poppins", sans-serif;
-  cursor: pointer;
-  color: #33302C;
-
-font-size: 16px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-}
-
-.mobile-nav-toggle .chevron{
-  transition: transform 0.3s ease;
-}
-
-.mobile-nav-item.open .mobile-nav-toggle{
-  background: #F5F9FC;
-}
-
-.mobile-nav-item.open .chevron{
-  transform: rotate(180deg);
-}
-
-.mobile-nav-submenu{
-  display: none;
-  flex-direction: column;
-  padding: 0 4px 12px 12px;
-}
-
-.mobile-nav-item.open .mobile-nav-submenu{
-  display: flex;
-  flex-direction: row;
-}
-
-.mobile-nav-submenu a{
-  padding: 8px 0;
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(0,0,0,0.75);
-  text-decoration: none;
-}
-
-.mobile-contact-btn{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: #DF0B13;
-
- 
-  text-decoration: none;
-  padding: 12px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  max-width: 327px;
-}
-.mobile-contact-btn span{
-color: #FFF;
+            text-decoration: none;
+            display: inline-flex;
+            padding: 12px 15px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 10px;
+            background: #DF0B13;
+            color: var(--background-color);
 
 
-font-size: 18px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-}
+            text-align: center;
+            /* B */
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        .contact-btn-div img {
+            width: 22.005px;
+            height: 22.005px;
+            transition: transform 0.4s ease;
+        }
+
+        .contact-btn-div {
+            width: 24px;
+            height: 24px;
+        }
 
 
-.mobile-contact-btn img{
-    width: 22.005px;
-height: 22.005px;
- transition: transform 0.4s ease;
-}
-    
+        .contact-btn:hover img {
+            transform: rotate(90deg);
+        }
 
-.mobile-contact-btn:hover img {
-    transform: rotate(90deg);
-    background-color: #DF0B13;
-}
+        .toggle_button {
+            width: 24px;
+            height: 24px;
+            display: none;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
 
-.mobile-promo-card{
-  position: relative;
-  overflow: hidden;
-  background: #002B49;
-  border-radius: 14px;
-  padding: 20px;
-  color: #FFF;
-}
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: #FFF;
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 24px 20px 40px;
+        }
 
-.corner-svg{
-    position: absolute;
-    top: -15px;
-    right: -15px;
-    width: 110px;
-    height: 110px;
-    pointer-events: none;
-    z-index: 1;
-}
+        .mobile-menu-overlay.active {
+            display: block;
+        }
 
-.corner-fill,
-.corner-outline{
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-}
+        body.menu-open {
+            overflow: hidden;
+        }
 
-.corner-fill{
-    z-index: 1;
-}
+        .mobile-menu-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
 
-.corner-outline{
-    z-index: 2;
-}
+        .mobile-menu-top .logo img {
+            width: 130px;
+            height: auto;
+        }
 
-.promo-icon{
-  width: 40px;
-  height: 40px;
- 
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 14px;
-}
+        .mobile-menu-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-.mobile-promo-card h3{
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
+        .mobile-menu-right .flag-link,
+        .mobile-menu-right .vector {
+            width: 60px;
+            height: 54px;
+        }
 
-.mobile-promo-card p{
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 22px;
-  margin-bottom: 16px;
-  opacity: 0.9;
-}
+        .mobile-menu-close {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
 
-.promo-btn{
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #FFF;
-  color: #000;
-  font-size: 14px;
-  font-weight: 700;
-  text-decoration: none;
-  padding: 10px 14px;
-  border-radius: 8px;
-}
-.mobile-nav-submenu{
-  display: none;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 14px 4px 16px 4px;
-}
+        .mobile-nav-list {
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+        }
 
-.mobile-nav-item.open .mobile-nav-submenu{
-  display: flex;
-}
+        .mobile-nav-item {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
 
-.mobile-nav-submenu a{
-  flex: 1 1 calc(50% - 5px);
-  display: flex;
-  align-items: center;
-  background: #D7EDF8;
-  color: #33302C;
-  font-family: "Poppins", sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 12px 14px;
-  border-radius: 10px;
-  min-width: 130px;
-}
+        .mobile-nav-item>a {
+            display: block;
+            padding: 14px 4px;
+            color: #33302C;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            text-decoration: none;
+        }
 
-.mobile-nav-submenu a.full-width{
-  flex: 1 1 100%;
-}
+        .mobile-nav-toggle {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 4px;
+            background: none;
+            border: none;
+            font-family: "Poppins", sans-serif;
+            cursor: pointer;
+            color: #33302C;
+
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        .mobile-nav-toggle .chevron {
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-nav-item.open .mobile-nav-toggle {
+            background: #F5F9FC;
+        }
+
+        .mobile-nav-item.open .chevron {
+            transform: rotate(180deg);
+        }
+
+        .mobile-nav-submenu {
+            display: none;
+            flex-direction: column;
+            padding: 0 4px 12px 12px;
+        }
+
+        .mobile-nav-item.open .mobile-nav-submenu {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .mobile-nav-submenu a {
+            padding: 8px 0;
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.75);
+            text-decoration: none;
+        }
+
+        .mobile-contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #DF0B13;
+
+
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            max-width: 327px;
+        }
+
+        .mobile-contact-btn span {
+            color: #FFF;
+
+
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+
+        .mobile-contact-btn img {
+            width: 22.005px;
+            height: 22.005px;
+            transition: transform 0.4s ease;
+        }
+
+
+        .mobile-contact-btn:hover img {
+            transform: rotate(90deg);
+            background-color: #DF0B13;
+        }
+
+        .mobile-promo-card {
+            position: relative;
+            overflow: hidden;
+            background: #002B49;
+            border-radius: 14px;
+            padding: 20px;
+            color: #FFF;
+        }
+
+        .corner-svg {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 110px;
+            height: 110px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .corner-fill,
+        .corner-outline {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .corner-fill {
+            z-index: 1;
+        }
+
+        .corner-outline {
+            z-index: 2;
+        }
+
+        .promo-icon {
+            width: 40px;
+            height: 40px;
+
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+
+        .mobile-promo-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .mobile-promo-card p {
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 22px;
+            margin-bottom: 16px;
+            opacity: 0.9;
+        }
+
+        .promo-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #FFF;
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 10px 14px;
+            border-radius: 8px;
+        }
+
+        .mobile-nav-submenu {
+            display: none;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 14px 4px 16px 4px;
+        }
+
+        .mobile-nav-item.open .mobile-nav-submenu {
+            display: flex;
+        }
+
+        .mobile-nav-submenu a {
+            flex: 1 1 calc(50% - 5px);
+            display: flex;
+            align-items: center;
+            background: #D7EDF8;
+            color: #33302C;
+            font-family: "Poppins", sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 12px 14px;
+            border-radius: 10px;
+            min-width: 130px;
+        }
+
+        .mobile-nav-submenu a.full-width {
+            flex: 1 1 100%;
+        }
 
 
 
 
-/*==========================
+        /*==========================
     MEGA MENU (generic)
 ==========================*/
-.mega-menu{
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    width: auto;
-    margin: 0;
-    padding: 0px 33px 33px 33px;
-    border-radius: 0 0 30px 30px;
-   background: #FFF;
-    z-index: 999;
-    display: none;
-    transition: transform 1.5s ease;
-}
+        .mega-menu {
+            position: absolute;
+            top: 150px;
+            /* CHANGED: was top:100% (relative to a growing box, so it
+                                    followed the bottom edge). Now it's pinned to a fixed
+                                    offset that matches the header-row height, so it always
+                                    sits right under the nav links instead of drifting. */
+            left: 0;
+            right: 0;
+            width: auto;
+            margin: 0;
+            padding: 0px 33px 33px 33px;
+            border-radius: 0 0 30px 30px;
+            background: #FFF;
+            z-index: 999;
 
-.nav-link:hover .mega-menu{
-    display: block;
-} 
-/* .mega-menu{
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
+            /* CHANGED: replaced the abrupt display:none/block with an animated fade + slide,
+       same idea as the reference file's .mega-panel */
+            opacity: 0;
+            transform: translateY(-6px);
+            pointer-events: none;
+            transition: opacity .25s ease .08s, transform .25s ease .08s;
+       
+        }
 
-    background: white;
-    border-radius: 0 0 30px 30px;
+        .nav-link:hover .mega-menu {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
 
-    transform-origin: top center;
-    transform: scaleY(0);
+        .mega-menu-inner {
+            display: flex;
+            align-items: stretch;
 
-    opacity: 0;
-    visibility: hidden;
+        }
 
-    transition:
-        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.25s ease;
+        .mega-menu:hover {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
 
-    overflow: hidden;
-}
+        .nav-link:hover .mega-menu,
+        .mega-menu:hover {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
 
-.nav-link:hover .mega-menu{
-    transform: scaleY(1);
-    opacity: 1;
-    visibility: visible;
-} */
 
-.mega-menu-inner{
-    display: flex;
-    align-items: stretch;
-   
-}
+    .navbar a:hover {
+        color: var(--primary-color);
+    }
 
-/*==========================
+    .nav-link:hover a {
+        color: var(--primary-color);
+    }
+
+    /* Arrow flip: same fix — scoped to .nav-link instead of .arrow-class */
+    .nav-link:hover .arrow_down svg {
+        transform: rotateX(180deg);
+    }
+
+    .nav-link:hover .arrow_down svg path {
+        fill: #0095DA;
+    }
+
+    .nav-link:hover .arrow_down img {
+        transform: rotateX(180deg);
+    }
+
+    /* Pill stretch: driven by .nav-link:hover, consistent with everything else */
+
+
+    /* Mega-menu visibility */
+    .nav-link:hover .mega-menu {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    /* Bridge: closes the visual gap between nav-link and mega-menu so hover
+       never breaks while the cursor travels down into the panel */
+    .mega-menu::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 100%;
+        height: 40px;
+    }
+
+        /*==========================
     AUTISM MEGA MENU
 ==========================*/
 
-.autism-mega-menu .mega-menu-inner{
-   
-display: inline-flex;
-padding: 37px 52px 37px 39px;
-align-items: center;
-gap: 45px;
-border-radius: 20px;
-background: #D7EDF8;
-   
-}
+        .autism-mega-menu .mega-menu-inner {
 
-.mega-card{
-    position: relative;
-    overflow: hidden;
-   width: 317px;
-   height: 414px;
-    
-    flex-shrink: 0;
-     border-radius: 10px;
-    background: #FFF;
-    padding: 30px 26px;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-.star-shape{
-    position: absolute;
-    top: -19px;
-    left: 209px;
-    width: 135px;
-    height: 137px;
-}
-.mega-card-icon{
-    width: 45.433px;
-height: 49.002px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-   
-}
+            display: inline-flex;
+            padding: 37px 52px 37px 39px;
+            align-items: center;
+            gap: 45px;
+            border-radius: 20px;
+            background: #D7EDF8;
 
-.mega-card-icon svg{
-    width: 26px;
-    height: 26px;
-}
-.puzzle-shape{
-    position: absolute;
-    top: -10px;
-    right: -25px;
-    width: 135.55px;
-    height: 135.26px;
-    z-index: 1;
-    pointer-events: none;
-}
+        }
 
-/* both svgs occupy the identical box so they overlay perfectly */
-.puzzle-shape.puzzle-shape-outline{
-    top: -10px;
-    right: -25px;
-}
-.puzzle-shape1{
-  position: absolute;
-    top: -36.5px;
-    left: 200px;
-    width: 135.55px;
-    height: 135.26px;
-    z-index: 1;
-    pointer-events: none;
-}
-.puzzle-shape1.puzzle-shape-outline{
-    top: -10px;
-    right: -25px;
-}
-.mega-card .inner-card{
-    display: flex;
-width: 277px;
-flex-direction: column;
-align-items: flex-start;
-gap: 23px;
-}
-.inner-card-content{
-    display: flex;
-flex-direction: column;
-align-items: flex-start;
-gap: 10px;
-align-self: stretch;
-}
-.inner-card-content h3{
-    color: #000;
-font-size: 18px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-}
+        .mega-card {
+            position: relative;
+            overflow: hidden;
+            width: 317px;
+            height: 414px;
 
+            flex-shrink: 0;
+            border-radius: 10px;
+            background: #FFF;
+            padding: 30px 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
 
+        .star-shape {
+            position: absolute;
+            top: -19px;
+            left: 209px;
+            width: 135px;
+            height: 137px;
+        }
 
-.inner-card-content p{
-   color: rgba(0, 0, 0, 0.90);
+        .mega-card-icon {
+            width: 45.433px;
+            height: 49.002px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-font-size: 15px;
-font-style: normal;
-font-weight: 500;
-line-height: 30px;
-margin-bottom: 27px;
-}
-.autism_mega_btn .arrow{
-    position:absolute;
-    width:18px;
-    height:16px;
-    transition:transform .4s ease, opacity .4s ease;
-}
-.autism_mega_btn:hover .arrow1{
-    transform:translateX(25px);
-    opacity:0;
-}
+        }
 
-.autism_mega_btn:hover .arrow2{
-    transform:translateX(0);
-    opacity:1;
-}
-.autism_mega_btn{
-    background-color: white;
-        display: inline-flex;
-padding: 12px 15px;
-justify-content: center;
-align-items: center;
-gap: 10px;
-border-radius: 10px;
-text-decoration: none;
-}
+        .mega-card-icon svg {
+            width: 26px;
+            height: 26px;
+        }
 
-.autism_mega_btn span{
-    color: black;
-}
+        .puzzle-shape {
+            position: absolute;
+            top: -10px;
+            right: -25px;
+            width: 135.55px;
+            height: 135.26px;
+            z-index: 1;
+            pointer-events: none;
+        }
 
-.hub_btn{
-    background-color: #006FA2;
-  
-}
-.hub_btn span{
-  color: white;
-}
+        .puzzle-shape.puzzle-shape-outline {
+            top: -10px;
+            right: -25px;
+        }
 
-.mega-links{
-    flex: 1;
-    display: flex;
-    gap: 53px;
-}
+        .puzzle-shape1 {
+            position: absolute;
+            top: -36.5px;
+            left: 200px;
+            width: 135.55px;
+            height: 135.26px;
+            z-index: 1;
+            pointer-events: none;
+        }
 
-.mega-links-col{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-}
+        .puzzle-shape1.puzzle-shape-outline {
+            top: -10px;
+            right: -25px;
+        }
 
-.mega-link-item{
-    display: flex;
-    padding: 10px;
-    align-items: flex-start;
-    gap: 22px;
+        .mega-card .inner-card {
+            display: flex;
+            width: 277px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 23px;
+        }
 
-    border-radius: 15px;
-}
-.mega-link-item:hover{
-    background-color: #FFF;
-}
+        .inner-card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            align-self: stretch;
+        }
 
-.mega-link-item .main{
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-}
+        .inner-card-content h3 {
+            color: #000;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+        .inner-card-content p {
+            color: rgba(0, 0, 0, 0.90);
 
-.mega-link-line{
-    width: 100%;
-    height: 2px;
-    display: block;
-}
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 30px;
+            margin-bottom: 27px;
+        }
+        .hero_icons {
+            /* NEW: wraps the swapping arrow1/arrow2 icons inside the real button markup */
+            position: relative;
+            width: 19px;
+            height: 16px;
+            flex-shrink: 0;
+        }
 
-.mega-link-icon{
-    display: flex;
-    width: 90px;
-    height: 90px;
-    padding: 10px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    background: #FFF;
-     flex-shrink: 0;
-}
-.mega-link-item:hover .mega-link-icon{
-   background: #D7EDF8;
-    transform: scale(0.9);
-}
-.mega-link-item:hover .mega-link-icon svg *{
-    fill: #000;
-}
+        .autism_mega_btn .arrow {
+            position: absolute;
+            width: 18px;
+            height: 16px;
+            transition: transform .4s ease, opacity .4s ease;
+        }
 
+        .autism_mega_btn:hover .arrow1 {
+            transform: translateX(25px);
+            opacity: 0;
+        }
 
+        .autism_mega_btn:hover .arrow2 {
+            transform: translateX(0);
+            opacity: 1;
+        }
 
-.mega-link-icon svg{
-    width: 37.816px;
-    height: 46.795px;
-     transition: transform 1s ease;
-}
+        .autism_mega_btn {
+            position: relative;
+            /* NEW: the swapping arrow1/arrow2 need a positioned parent */
+            background-color: white;
+            display: inline-flex;
+            padding: 12px 15px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 10px;
+            text-decoration: none;
+        }
 
-.mega-link-text h4{
-  color: #000;
+        .autism_mega_btn span {
+            color: black;
+        }
 
-font-size: 18px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-}
+        .hub_btn {
+            background-color: #006FA2;
 
-.mega-link-text p{
-  color: #000;
+        }
 
-font-size: 16px;
-font-style: normal;
-font-weight: 500;
-line-height: 30px;
-}
+        .hub_btn span {
+            color: white;
+        }
 
+        .mega-links {
+            flex: 1;
+            display: flex;
+            gap: 53px;
+        }
 
-/* mega menu advice and guidances */
-.advice-mega-menu .mega-menu-inner{
-    display: inline-flex;
-    padding: 37px 52px 37px 39px;
-    align-items: center;
-    gap: 45px;
-    border-radius: 20px;
-    background: #D7EDF8; /* change this if Advice & Guidance should have a different tint */
-}
+        .mega-links-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
 
-.advice-card{
-      background: #002B49;
-      color: #FFF;
-}
-.advice-card .inner-card-content h3,.advice-card .inner-card-content p{
-    color: white;
-}
+        .mega-link-item {
+            display: flex;
+            padding: 10px;
+            align-items: flex-start;
+            gap: 22px;
+
+            border-radius: 15px;
+            text-decoration: none;
+            /* NEW: since these are now real <a> tags */
+        }
+
+        .mega-link-item:hover {
+            background-color: #FFF;
+        }
+
+        .mega-link-item .main {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .mega-link-line {
+            width: 100%;
+            height: 2px;
+            display: block;
+        }
+
+        .mega-link-icon {
+            display: flex;
+            width: 90px;
+            height: 90px;
+            padding: 10px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            background: #FFF;
+            flex-shrink: 0;
+        }
+
+        .mega-link-item:hover .mega-link-icon {
+            background: #D7EDF8;
+            transform: scale(0.9);
+        }
+
+        .mega-link-item:hover .mega-link-icon svg * {
+            fill: #000;
+        }
 
 
 
+        .mega-link-icon svg {
+            width: 37.816px;
+            height: 46.795px;
+            transition: transform 1s ease;
+        }
 
-/*  advice hub  */
+        .mega-link-text h4 {
+            color: #000;
 
-.hub-mega-menu  .mega-menu-inner{
-        display: inline-flex;
-    padding: 37px 52px 37px 39px;
-   
-    gap: 38px;
-    border-radius: 20px;
-    background: #D7EDF8;
-}
-/* .mega-hub{
-    display: flex;
-    gap: 38px;
-     align-items: flex-start;
-}
-.hub-container{
-    display: flex;
-width: 290px;
-height: 301px;
-padding: 16px;
-flex-direction: column;
-align-items: flex-start;
-gap: 20px;
-border-radius: 10px;
-background: #FFF;
-} */
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
 
-.mega-hub{
-    display: flex;
-    gap: 38px;
-    align-items: flex-start;
-    flex-wrap: wrap;        /* safety net if it still can't fit */
-}
+        .mega-link-text p {
+            color: #000;
 
-.hub-container{
-    display: flex;
-    flex: 1 1 220px;         /* was: width: 290px — now shrinks, min ~220px */
-    max-width: 290px;        /* caps it at the original design size on wide screens */
-    height: 301px;
-    padding: 16px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-    border-radius: 10px;
-    background: #FFF;
-}
-.hub-img{
-    display: flex;
-width: 42px;
-height: 42px;
-padding: 13px;
-justify-content: center;
-align-items: center;
-gap: 10px;
-aspect-ratio: 1/1;
-border-radius: 100px;
-background: #000;
- position: relative;   /* Required */
-    overflow: hidden; 
-}
-.mega-overimg{
-    position: absolute;
-    top: -6px;
-    left: 212px;
-}
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 30px;
+        }
 
-.hub-title{
-    display: flex;
-justify-content: space-between;
-align-items: center;
-align-self: stretch;
-}
 
-.hub-title h2{
+        /* mega menu advice and guidances */
+        .advice-mega-menu .mega-menu-inner {
+            display: inline-flex;
+            padding: 37px 52px 37px 39px;
+            align-items: center;
+            gap: 45px;
+            border-radius: 20px;
+            background: #D7EDF8;
+            /* change this if Advice & Guidance should have a different tint */
+        }
 
-font-size: 18px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-}
-.hub-main-img{
-    height: 194px;
-flex-shrink: 0;
-align-self: stretch;
-border-radius: 8px;
-border: 4px solid #FFF;
+        .advice-card {
+            background: #002B49;
+            color: #FFF;
+        }
 
-}
-.autism_arrow path {
-    fill: white;
-}
-.autism_arrow1 path {
-    fill: white;
-}
+        .advice-card .inner-card-content h3,
+        .advice-card .inner-card-content p {
+            color: white;
+        }
+
+
+
+
+        /*  advice hub  */
+
+        .hub-mega-menu .mega-menu-inner {
+            display: inline-flex;
+            padding: 37px 52px 37px 39px;
+
+            gap: 38px;
+            border-radius: 20px;
+            background: #D7EDF8;
+        }
+
+
+        .mega-hub {
+            display: flex;
+            gap: 38px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            /* safety net if it still can't fit */
+        }
+
+        .hub-container {
+            display: flex;
+            flex: 1 1 220px;
+            /* was: width: 290px — now shrinks, min ~220px */
+            max-width: 290px;
+            /* caps it at the original design size on wide screens */
+            height: 301px;
+            padding: 16px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+            border-radius: 10px;
+            background: #FFF;
+            text-decoration: none;
+            /* NEW: hub-container is now an <a> */
+        }
+
+        .hub-img {
+            display: flex;
+            width: 42px;
+            height: 42px;
+            padding: 13px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            aspect-ratio: 1/1;
+            border-radius: 100px;
+            background: #000;
+            position: relative;
+            /* Required */
+            overflow: hidden;
+        }
+
+        .mega-overimg {
+            position: absolute;
+            top: -6px;
+            left: 212px;
+        }
+
+        .hub-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            align-self: stretch;
+        }
+
+        .hub-title h2 {
+            color: #000;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        .hub-main-img {
+            height: 194px;
+            flex-shrink: 0;
+            align-self: stretch;
+            border-radius: 8px;
+            border: 4px solid #FFF;
+            background: #E5E5E5;
+            /* NEW: placeholder tint so the box is visible before you drop in a real image */
+            object-fit: cover;
+
+        }
+
+        .autism_arrow path {
+            fill: white;
+        }
+
+        .autism_arrow1 path {
+            fill: white;
+        }
+
+
+
+
+
+        .hub-arrow {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            transition: transform .35s ease, opacity .35s ease;
+        }
+
+        .hub-arrow1 {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+
+        .hub-arrow2 {
+            transform: translate(-16px, 16px);
+            opacity: 0;
+        }
+
+        /* Hover animation */
+        .hub-container:hover .hub-arrow1 {
+            transform: translate(20px, -20px);
+            opacity: 0;
+        }
+
+        .hub-container:hover .hub-arrow2 {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+
+
+
+
+
 
 
 
@@ -1852,19 +1981,8 @@ line-height: 35px;
 .membership_content1{
     display: none;
 }
-.membership_content1 h2{
-       color: #000;
-font-size: 50px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-display: none;
-}
-.membership_content1 span{
-       background: #fed103;
-       padding: 5px 7px 3px 10px;
-       border-radius: 10px;
-}
+
+
 .memebership_content h2{
     color: #000;
 font-size: 50px;
@@ -2182,7 +2300,7 @@ background: rgba(0, 0, 0, 0.20);
     padding-bottom: 59px;
     width: 100%;    /* total width */
     /* padding: 217px 24px 59px;  */
-    padding: 217px 28px 59px 28px;
+    padding: 217px 26px 59px 28px;
 }
 .logo-vision{
     max-width:326px;
@@ -2196,12 +2314,14 @@ line-height: 34px;
 }
 .logo-vision p{
     height: 129px;
+    /* padding-left: 3px; */
 }
 .social_media{
     padding-top: 29px;
     display: inline-flex;
 align-items: center;
 gap: 12px;
+padding-left: 2px;
 }
 .social_icon{
     display: flex;
@@ -2268,9 +2388,13 @@ line-height: 39px;
 .foot_btn{
   border: 2px solid white;
  background: #002B49;
+ padding: 11px 16px;
+ padding-left: 13px;
+ padding-right: 12px;
 }
 .foot_btn span{
      background: #002B49;
+     white-space: nowrap;
 }
 
 
@@ -2458,6 +2582,7 @@ font-style: normal;
 font-weight: 600;
 line-height: 35px;
 max-width: 330px;
+padding-left: 6px;
 }
 
 .form-right1 input{
@@ -2558,17 +2683,27 @@ text-decoration-line: underline;
 
 @media (max-width: 1500px) {   /* was 1400px */
 
-  .header-container{
+  .header-row {
     justify-content: space-between;
     height: 120px;
     /* margin: 30px auto; */
-    padding: 0px 24px 0px 20px;
+    /* padding: 0px 24px 0px 20px; */
     border-radius: 24px;
   }
 
-  .header-container:has(.nav-link:hover){
-    border-radius: 24px 24px 0 0;
-  }
+   .header-row, .nav-link ,  .header-container ,.mega-menu{
+             height: 150px;
+   } 
+  
+    .mega-menu{
+        top: 150px;
+    }
+
+
+
+.header-container:has(#autismNavLink:hover) { 
+    height: 730px;
+ }
 
   .logo{
     width: 160px;
@@ -2608,14 +2743,37 @@ text-decoration-line: underline;
 
 @media (max-width: 1400px) {
 
-    .header-container{
-    height: 120px;
+    .header-row{
+    height: 150px;
     /* margin: 30px auto; */
-    padding: 0px 24px 0px 20px;
+    /* padding: 0px 24px 0px 20px; */
     border-radius: 24px;
   }
+   .header-row, .nav-link ,  .header-container ,.mega-menu{
+             height: 150px;
+   } 
+  
+    .mega-menu{
+        top: 150px;
+    }
 
-  .header-container:has(.nav-link:hover){
+/* .header-container:has(#autismNavLink:hover) {
+  height: 730px;
+}
+.header-container:has(#adviceNavLink:hover) {
+  height: 708px;
+} */
+.advice-mega-menu .mega-menu-inner{
+    padding: 29px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.mega-links-col{
+    gap: 11px;
+}
+
+
+  .header-row:has(.nav-link:hover){
     border-radius: 24px 24px 0 0;
   }
 
@@ -2630,7 +2788,7 @@ text-decoration-line: underline;
   }
 
   .navbar a{
-   
+   font-size: 16px;
     line-height: 30px;
   }
 
@@ -2733,26 +2891,46 @@ gap: 70px;
         gap: 10px;
          flex-wrap: wrap;
     }
-}
 
-@media (max-width: 1240px){
+    .mega-link-item{
+        padding: 5px;
+    }
+}
+@media (max-width: 1290px){
+
+
+
+.header-container:has(#hubNavLink:hover)    { height: 870px; }
+}
+@media (max-width: 1230px){
 
 .navbar a{
     font-size: 15px;
 }
+
+.header-container:has(#autismNavLink:hover) { height: 780px; }
 }
 
 
 
-@media (max-width: 1200px){
+@media (max-width: 1203px){
 
+
+    .advice-mega-menu .mega-menu-inner {
+       
+        padding-bottom: 45px;
+    }
+    .header-container:has(#autismNavLink:hover) { height: 630px; }
+
+
+    .header-container:has(#hubNavLink:hover)    { height: 670px; }
   .header-container{
-    padding: 0px 15px 0px 10px;
+    padding: 0px 9px 0px 8px;
     border-radius: 24px;
   }
 
   .navbar{
-    gap: 11px;
+    gap: 7px;
   
   }
 
@@ -2777,12 +2955,21 @@ gap: 70px;
 
 
   /* ================= MEGA MENU ================= */
+/* remove/replace your single rule */
+/* .header-container:has(#autismNavLink:hover) {
+  height: 638px;
+}
+   .header-container:has(#adviceNavLink:hover) {
+  height: 638px;
+} */
 
+  
   .autism-mega-menu .mega-menu-inner,
-  .advice-mega-menu .mega-menu-inner,
+ 
   .hub-mega-menu .mega-menu-inner{
     padding: 24px 28px 24px 24px;
     gap: 28px;
+    align-items: flex-start;
   }
 
   .mega-card{
@@ -2841,12 +3028,12 @@ gap: 70px;
   }
 
   .mega-hub{
-    gap: 24px;
+    gap: 14px;
   }
 
   .hub-container{
     width: 220px;
-    height: 240px;
+    height: 220px;
     padding: 12px;
     gap: 14px;
   }
@@ -2976,11 +3163,24 @@ gap: 10px;
         justify-content: center;
         gap: 30px;
     }
+
+
+
+     .header-row, .nav-link ,  .header-container ,.mega-menu{
+             height: 120px;
+   } 
+  
+    .mega-menu{
+        top: 120px;
+    }
 }
 
+/* @media (max-width: 1126px) {
+    .header-container:has(#adviceNavLink:hover) {
+        height: 650px;
+    }
 
-
-
+} */
 
 
 @media (max-width: 1024px){
@@ -2988,6 +3188,14 @@ gap: 10px;
  .header-container{
     padding: 0px 35px 0px 35px;
   }
+
+  .header-row, .nav-link ,  .header-container ,.mega-menu{
+             height: 90px;
+   } 
+  
+    .mega-menu{
+        top: 90px;
+    }
 
   .navbar{
     display: none;
@@ -3013,7 +3221,7 @@ gap: 10px;
   }
 
   .hero{
-    min-height: 86vh;
+    min-height: 95vh;
   }
      .hero .container{
         padding-top: 300px;
@@ -3082,18 +3290,25 @@ gap: 10px;
     gap: 20px;
 
   }
-    .memebership_content1{
-        width: 100%;
-        display: block;
-        flex: 0 0 100%;
-        text-align: center;
-    }
-
-  .membership_content1 h2{
+ .membership_content1{        /* <-- "memebership", not "membership" */
+    width: 100%;
     display: block;
-    font-size: 40px;
+    flex: 0 0 100%;
     text-align: center;
-  }
+    color: #000;
+
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.membership_content1 span,
+.membership_content1 strong {
+    background: #fed103;
+    padding: 5px 7px 3px 10px;
+    border-radius: 10px;
+}
      .item1 {
         order: 1;
     }
@@ -3242,6 +3457,9 @@ gap: 10px;
     .ags-image-frame{
         max-width: 500px;
     }
+
+
+
 }
 
 
@@ -3258,7 +3476,7 @@ gap: 10px;
         padding: 0px 30px;
     }
      .hero{
-    min-height: 77vh;
+    min-height: 88vh;
   }
     .hero .container{
         padding-top: 250px;
@@ -3400,7 +3618,8 @@ line-height: 27px;
         gap: 24px;
      }
     .knowledge_box{ 
-        max-height: none
+        max-height: none;
+        align-items: flex-start;
      }
      .know_card1 > div{
         width: 100%;
@@ -3431,6 +3650,24 @@ line-height: 27px;
         height: 50px;
         min-width: 0px;
     }
+
+
+    .head-card-img{
+    width: 50px;
+    height: 50px;
+    min-width: 0px;
+    padding: 5px;             
+}
+
+.head-card-img svg{            
+    width: 30px;
+    height: 30px;
+}
+
+.corner-arrow2{                
+    top: 11px;
+    left: 8px;
+}
 }
 
 @media(max-width:620px){
@@ -3632,11 +3869,35 @@ line-height: 27px;
 
 
 
-@media (max-width: 390px){
+@media (max-width: 388px){
   
         .container {
-        padding: 0px 10px;
+        padding: 0px 16px;
+      
         }
+            .hero .container {
+        padding-top: 275px;
+    }
+        .hero_buts
+ {
+        padding: 2px 4px;
+        gap: 3px;
+    }
+    .hero_subcontent {
+ 
+    margin-bottom: 20px;
+}
+    .hero-content h1 {
+        margin-bottom: 18px;
+    }
+    .hero{
+        min-height: 96vh;
+    }
+
+
+
+
+
     .logo{
       
         height: 50px;
@@ -3644,8 +3905,14 @@ line-height: 27px;
         align-items: center;
     }
         .header-container{
-            padding: 0px 10px 0px 10px;
+            padding: 0px 20px 0px 20px;
+           
         }
+.hero-content span
+{
+    padding: 6px 8px
+}
+ 
         .flag-link, .vector{
             width: 33px;
             height: 33px;
@@ -3676,15 +3943,247 @@ font-style: normal;
 font-weight: 600;
 line-height: 27px; 
     }
+
+
+
+        .autism_class {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+
+    .autism-content p {
+        color: #000;
+text-align: center;
+
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 27px; 
+
+    }
+
+        .advice_head1 h2{
+            color: #000;
+text-align: center;
+
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+        }
+
+        .container_body{
+            padding: 0px 16px;
+        }
+            .advice_head1 {
+                padding-left: 0px;
+            }
+                .advice_main{
+                    gap: 45px;
+                }
+            .ags-image-frame{
+                max-width: 321px;
+            }
+                .advice_left{
+                    gap: 20px;
+                }
+    .arrow-hide{
+        gap: 14px;
+    }
+    .advice-body {
+    height: 943px;
+    background-image: linear-gradient(
+        to bottom,
+        #57c1a8 0,
+        #57c1a8 588px,
+        #dcfcf4 588px,
+        #dcfcf4 943px
+    );
+}
+.advice_subcontent h3 {
+   font-size: 25px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
 }
 
+
+.advice_subcontent p{
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 27px;
+padding-bottom: 9px;
+}
+.advice_content11{
+    padding-left: 0px;
+}
+    .advice_subcontent {
+        gap: 16px;
+    }
+
+
+
+        .value-container{
+            padding-top: 40px;
+            gap: 36px;
+        }
+        .value-container h1{
+            font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+        }
+  .value-card{
+    height: 315px;
+  }
+  .card-content h1{
+    font-size: 100px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+height:114px;
+  }
+  .card-content h3 {
+    font-size: 25px;
+font-style: normal;
+font-weight: 700;
+line-height: 37px; 
+  }
+  .card-content p{
+    font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: 27px;
+  }
+  .membership_right{
+    padding-bottom: 0px 16px 0px 25px;
+  }
+      .membership_right img{
+        max-width: 348px;
+        min-width: 0px;
+      }
+      .membership_wrapper{
+        padding: 0px;
+      }
+          .memebership_content p{
+            text-align: center;
+          }
+        .support_content-1{
+            gap: 3px;
+        }
+        /* .membership_section{
+            height: 943px;
+        } */
+        .membership_content1 strong{
+            padding-top: 0px;
+            padding-bottom: 0px;
+            padding-right: 5;
+            margin-right: -5px;
+        }
+        .knowledge_heading h2{
+            font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+        }
+        .knowledge_wrapper{
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+        .knowledge_box p{
+
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: 27px;
+        }
+            .know_card1 img {
+            max-width: 346px;
+        }
+        .know_card1 p {
+            font-size: 14px;
+        }
+            .knowledge_card {
+                gap: 35px;
+            }
+            .knowledge_bt{
+                padding-top: 35px;
+            }
+
+
+                .footer_form {
+                    top: 46px;
+                    padding: 25px 20px;
+                }
+                    .form-left h1{
+                        font-size: 25px;
+                        text-align: center;
+                    }
+                    .form-left p{
+                        text-align: center;
+                    }
+                    .form-right1 h2{
+                        font-size: 14px;
+                    }
+
+                    .a1{
+                        order: 3;
+                        font-size: 14px;
+                    }
+                    .a2{
+                        order: 1;
+                    }
+                    .a3{
+                        order: 2;
+                        gap: 10px;
+                        font-size: 14px;
+                    }
+                    .footer_policy h4{
+                        font-size: 14px;
+                    }
+                    .footer_ends{
+                        gap: 1px;
+                        align-items: normal;
+                        justify-content: flex-start;
+                        .footer-top {
+                            height: 328px;
+                        }
+                        .footer-content {
+        padding-top: 431px;
+    }
+    .social_media{
+        padding-top: 0px;
+    }
+    .footer-logo-sec img{
+        width: 152px;
+    }
+
+    .mobile-nav-submenu a {
+        padding-left: 8px;
+    }
+    .skills-submenu{
+        padding: 11px 14px;
+    }
+    .mobile-menu-right .vector, .mobile-menu-right .flag-link{
+        width: 33px;
+        height: 33px;
+    }
+           .knowledge_btn,.form-btn,.membership_btn,.value_btn,.advice_btn,.austism-btn{
+            padding: 10px 14px;
+           } 
+
+          
+}
+}
 
 
 /* ================================
    RESPONSIVE — FOOTER SECTION
    ================================ */
 
-@media (max-width: 1700px){
+@media (max-width: 1820px){
 
     .footer_form{
         position: absolute;
